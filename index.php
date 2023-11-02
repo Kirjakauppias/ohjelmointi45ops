@@ -24,13 +24,13 @@
         <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
         <div class="menu-log-cart-container">
             <div class="menu">
-                <a href=""><img src="images/menu.png"></a>
+                <a href=""><img src="images/menutext.png"></a>
             </div>
             <div class="log">
-                <a href=""><img src="images/login.jpg"></a>
+                <a href=""><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
-                <a href=""><img src="images/shoppingcart.jpg"></a>
+                <a href=""><img src="images/carttext.png"></a>
             </div>
         </div>
         
