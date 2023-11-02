@@ -1,17 +1,16 @@
 header {
-    width: 50%;
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     height: 12rem;
     display: flex;
     align-items: center;
     margin: 0 auto;                     /*Tämä keskittää headerin*/
-    /*justify-content: space-between;*/
     border-bottom: 1px solid black;
 }
 
 
 /*BANNER*/
 .banner-search-container {
-    width: 35%;
+    width: 35%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
 }
 
 .banner {
@@ -36,7 +35,7 @@ header {
 /* LOG & CART */
 .menu-log-cart-container {
     display: flex;
-    width: 55%;
+    width: 55%;                          /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     justify-content: space-between;
 }
 
