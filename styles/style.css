@@ -1,3 +1,6 @@
+body {
+    margin: 0;
+}
 header {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     height: 12rem;
@@ -72,15 +75,15 @@ main {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
     justify-content: center;
 }
 
 .product-container {
-    width: 30%;
+    width: 30%;                         /*Tällä saan 3 tuotetta yhteen riviin*/
     height: 22rem;
     display: block;
-    text-align: center;
+    text-align: center;                 /* Tämä laittoi otsikon, kuvan ja hinnan keskitettyä*/
 }
 
 .product-header {
@@ -98,4 +101,13 @@ main {
 
 .product-price {
 
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: black;
+    height: 15rem;
+    width: 50%;
+    margin: 0 auto;
 }

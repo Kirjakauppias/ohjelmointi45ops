@@ -34,8 +34,8 @@
             </div>
         </div>
     </header>
-    <main>
-        <!--TUOTE-LAATIKKO-->
+    <main>                                                                  <!--TÄSSÄ VAIHEESSA OLEN KOVAKOODANNUT USEAMMAN TUOTELAATIKON -->
+        <!--TUOTE-LAATIKKO-->                                               <!--JOTTA ETUSIVU NÄYTTÄÄ TOIVOTULTA -->            
         <div class="product-container">
             <!--TUOTTEEN OTSIKKO-->
             <div class="product-header">
