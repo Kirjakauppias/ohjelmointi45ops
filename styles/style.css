@@ -13,6 +13,15 @@ nav img {
     width: 75px;
 }
 
+/*BANNER*/
+.banner-search-container {
+
+}
+
+.banner {
+    
+}
+
 /*SEARCHBAR*/
 .search-container {
 
@@ -24,4 +33,14 @@ nav img {
 
 .search-container button {
 
+}
+
+/* LOG & CART */
+.log-cart-container {
+
+}
+
+.log-cart-container img {
+    height: 75px;
+    width: 75px;
 }

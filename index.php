@@ -7,19 +7,30 @@
 </head>
 <body>
     <header>
-        <h1>OTSIKKO</h1>
-
+        <!--BANNERI-->
+        <div class="banner-search-container">
+            <div class="banner">
+                <h1>OTSIKKO</h1>
+            </div>
+        
+            <!--SEARCHBAR-->
+            <div class="search-container">
+                <input type="text" placeholder="Etsi tuotteita">
+                <button>Etsi</button>
+            </div>
+        </div>
+        
         <!--NAVIGOINTI-->
         <nav>
             <a href=""><img src="images/menu.png"></a>
         </nav>
 
-        <!--SEARCHBAR-->
-        <div class="search-container">
-            <input type="text" placeholder="Etsi tuotteita">
-            <button>Etsi</button>
+        <!--KIRJAUTUMINEN & OSTOSKORI-->
+        <div class="log-cart-container">
+            <a href=""><img src="images/login.jpg"></a>
+            <a href=""><img src="images/shoppingcart.jpg"></a>
         </div>
-
+        
     </header>
     <main>
     </main>
