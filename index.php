@@ -2,15 +2,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETUSIVU</title>
+    <title>KIRJA-SOPPI - ETUSIVU</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <header>
-        <!--BANNERI-->
+        <!--BANNERI & SEARCH-->
         <div class="banner-search-container">
+            <!--BANNERI-->
             <div class="banner">
-                <h1>OTSIKKO</h1>
+                <h1>KIRJA-SOPPI</h1>
             </div>
         
             <!--SEARCHBAR-->
@@ -20,15 +21,17 @@
             </div>
         </div>
         
-        <!--NAVIGOINTI-->
-        <nav>
-            <a href=""><img src="images/menu.png"></a>
-        </nav>
-
-        <!--KIRJAUTUMINEN & OSTOSKORI-->
-        <div class="log-cart-container">
-            <a href=""><img src="images/login.jpg"></a>
-            <a href=""><img src="images/shoppingcart.jpg"></a>
+        <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
+        <div class="menu-log-cart-container">
+            <div class="menu">
+                <a href=""><img src="images/menu.png"></a>
+            </div>
+            <div class="log">
+                <a href=""><img src="images/login.jpg"></a>
+            </div>
+            <div class="cart">
+                <a href=""><img src="images/shoppingcart.jpg"></a>
+            </div>
         </div>
         
     </header>
