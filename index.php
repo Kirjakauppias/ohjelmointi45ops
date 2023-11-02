@@ -33,9 +33,98 @@
                 <a href=""><img src="images/carttext.png"></a>
             </div>
         </div>
-        
     </header>
     <main>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
+        <!--TUOTE-LAATIKKO-->
+        <div class="product-container">
+            <!--TUOTTEEN OTSIKKO-->
+            <div class="product-header">
+                <h3>Product name</h3>
+            </div>
+            <!--TUOTTEEN KUVA-->
+            <div class="product-image">
+                <a href=""><img src="images/book.png"></a>
+            </div>
+            <!--TUOTTEEN HINTA-->
+            <div class="product-price">
+                <p>10 €</P>
+            </div>
+        </div>
     </main>
     <footer>
     </footer>
