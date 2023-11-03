@@ -27,15 +27,15 @@
                 <a href=""><img src="images/menutext.png"></a>
             </div>
             <div class="log">
-                <a href=""><img src="images/logtext.png"></a>
+                <a href="login.php"><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
                 <a href=""><img src="images/carttext.png"></a>
             </div>
         </div>
     </header>
-    <main>                                                                  <!--TÄSSÄ VAIHEESSA OLEN KOVAKOODANNUT USEAMMAN TUOTELAATIKON -->
-        <!--TUOTE-LAATIKKO-->                                               <!--JOTTA ETUSIVU NÄYTTÄÄ TOIVOTULTA -->            
+    <div class="index-main">                                                                  <!--TÄSSÄ VAIHEESSA OLEN KOVAKOODANNUT USEAMMAN TUOTELAATIKON -->
+        <!--TUOTE-LAATIKKO-->                                                           
         <div class="product-container">
             <!--TUOTTEEN OTSIKKO-->
             <div class="product-header">
@@ -125,7 +125,7 @@
                 <p>10 €</P>
             </div>
         </div>
-    </main>
+</div>
     <footer>
     </footer>
 </body>

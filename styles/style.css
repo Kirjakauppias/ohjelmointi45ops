@@ -70,8 +70,7 @@ header {
 }
 
 /*PRODUCTS*/
-
-main {
+.index-main {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     margin: 0 auto;
     display: flex;
@@ -110,4 +109,31 @@ footer {
     height: 15rem;
     width: 50%;
     margin: 0 auto;
+}
+
+/*LOGIN -FORM*/
+.login-main {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-container {
+
+}
+.email {
+
+}
+
+.password {
+
+}
+
+.submit {
+
+}
+
+.register-container {
+
 }

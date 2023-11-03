@@ -1,3 +1,17 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Vaihda oikeat sähköposti ja salasana tarpeen mukaan
+        if ($email === 'metarktis@gmail.com' && $password === 'salasana123') {
+            echo 'Kirjautuminen onnistui!';
+        } else {
+            echo 'Virheellinen sähköposti tai salasana.';
+        }
+    }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +20,7 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<header>
+    <header>
         <!--BANNERI & SEARCH-->
         <div class="banner-search-container">
             <!--BANNERI-->
@@ -34,5 +48,37 @@
             </div>
         </div>
     </header>
+    <div class="login-main">
+        
+        <!--KIRJAUTUMISLOMAKE-->
+        <div class="login-container">
+            <h2>KIRJAUTUMINEN</h2>
+            <p>Sisään voit kirjautua antamalla<br> 
+            sähköpostiosoitteesi ja rekisteröinnin<br> 
+            yhteydessä keksimäsi salasanan.</p>
+
+            <form action="login.php" method="post"> <!--POST vai GET-->
+                <div class="email">
+                    <label for="email">Sähköposti:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                </div>
+                <div class="password">
+                    <label for="password">Salasana:</label><br>
+                    <input type="password" id="password" name="password" required><br><br>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Kirjaudu">
+                </div>
+            </form>
+        </div>
+
+        <!--REKISTERÖINTI-OHJEISTUS-->
+        <div class="register-container">
+            <h2>OLETKO UUSI ASIAKAS?</h2>
+            <a href="">Rekisteröidy tästä</a>
+        </div>
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>
