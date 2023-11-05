@@ -11,25 +11,19 @@
 </head>
 <body>
     <?php
-    //Tarkistetaan, onko käyttäjä jo kirjautunut
-    if(isset($_SESSION["username"])) {
-        //Siirretään käyttäjä memberArea-sivulle
-        header("Location: memberArea.php");
-    } else {
-                // Kirjoitetaan virhe ilmoitus, jos kirjautumisessa oli virhe
-                if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
-                    if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
-                        echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
-                    }
-                }
-    }
+        //Tarkistetaan, onko käyttäjä jo kirjautunut
+        if(isset($_SESSION["username"])) {
+            //Siirretään käyttäjä memberArea-sivulle
+            header("Location: memberArea.php");
+    } 
     ?>
+
     <header>
         <!--BANNERI & SEARCH-->
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <h1>KIRJA-SOPPI</h1>
+                <h1>TUOTE-SOPPI</h1>
             </div>
         
             <!--SEARCHBAR-->
@@ -58,10 +52,25 @@
         <div class="login-container">
             <h2>KIRJAUTUMINEN</h2>
 
-            <form action="checkLogin.php" method="post"> 
+            <form action="checkLogin.php" method="post">
+                <div class="username"> 
                     <input type="text" name="username" placeholder="Kirjoita käyttäjätunnus">
+                </div>
+                <div class="password">
                     <input type="password" name="password" placeholder="Kirjoita salasana">
+                </div>
+                <div class="submit">
                     <input type="submit" value="Kirjaudu">
+                </div>
+                <div class="error-message">
+                    <?php
+                        if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
+                            if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
+                            echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
+                        }
+                        }
+                    ?>
+                </div>
             </form>
         </div>
 

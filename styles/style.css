@@ -60,6 +60,22 @@ header {
     height: 100px;
 }
 
+.logout {
+
+}
+
+.logout img {
+    width: 150px;
+    height: 100px;
+}
+
+.logout-button button{
+    border: none; 
+    background: none; 
+    padding: none; 
+    cursor: pointer;
+}
+
 .cart {
 
 }
@@ -68,6 +84,7 @@ header {
     width: 120px;
     height: 100px;
 }
+
 
 /*PRODUCTS*/
 .index-main {
@@ -120,9 +137,8 @@ footer {
 }
 
 .login-container {
-    display: block;
+   
 }
-
 
 .register-container {
 

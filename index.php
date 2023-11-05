@@ -11,7 +11,7 @@
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <h1>KIRJA-SOPPI</h1>
+                <h1>TUOTE-SOPPI</h1>
             </div>
         
             <!--SEARCHBAR-->
