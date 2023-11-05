@@ -1,7 +1,7 @@
 <?php
 session_start(); //Tarvitaan sessiota varten
 
-if($_SERRVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     //Jos vertailu on true
     //Tarkistetaan onko käyttäjänimi ja salsana oikein
     //1. otetaan tunnut ja salasana muuttujiin talteen
@@ -14,7 +14,17 @@ if($_SERRVER["REQUEST_METHOD"] == "POST") {
             // Lisätään koodi, jotta käyttäjä on "kirjautunut sisään" ja tietoja ei tarvitse syöttää joka kerta
             $_SESSION["username"] = $username; // Käyttäjän sessiossa on "username"-avain, hän on kirjautunut
             header("Location: memberArea.php");
+            exit();
+        } else {
+            header("Location: login.php?error=login");
+            exit();
         }
+    } else {
+        header("Location: login.php?error=login");
+        exit();
     }
+} else {
+    header("Location: login.php");
+    exit();
 }
 ?>

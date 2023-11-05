@@ -120,23 +120,9 @@ footer {
 }
 
 .login-container {
-
-}
-.username {
-
+    display: block;
 }
 
-.password {
-
-}
-
-.submit {
-
-}
-
-.login-error {
-    
-}
 
 .register-container {
 
