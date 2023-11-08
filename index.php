@@ -1,3 +1,29 @@
+<?php
+    // Tietokanta yhteys
+    // Palvelimen nimi muuttujaan
+    $servername = "localhost";
+    $databasename = "verkkokauppa";
+    $username = "root";
+    $password = "";
+    
+    //Yritetään
+    try {
+        //Luodaan yhteys, joka on PDO objekti
+        $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
+
+        //PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $products_kysely = $conn->prepare("SELECT * FROM products"   );
+
+        $products_kysely->execute();
+    }
+    catch (PDOException $e) {
+        // Yhteys epäonnistui
+        echo "". $e->getMessage();
+    }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,98 +60,23 @@
             </div>
         </div>
     </header>
-    <div class="index-main">                                                                  <!--TÄSSÄ VAIHEESSA OLEN KOVAKOODANNUT USEAMMAN TUOTELAATIKON -->
-        <!--TUOTE-LAATIKKO-->                                                           
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-        <!--TUOTE-LAATIKKO-->
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-        <!--TUOTE-LAATIKKO-->
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-        <!--TUOTE-LAATIKKO-->
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-        <!--TUOTE-LAATIKKO-->
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-        <!--TUOTE-LAATIKKO-->
-        <div class="product-container">
-            <!--TUOTTEEN OTSIKKO-->
-            <div class="product-header">
-                <h3>Product name</h3>
-            </div>
-            <!--TUOTTEEN KUVA-->
-            <div class="product-image">
-                <a href=""><img src="images/book.png"></a>
-            </div>
-            <!--TUOTTEEN HINTA-->
-            <div class="product-price">
-                <p>10 €</P>
-            </div>
-        </div>
-</div>
+    <!--TUOTTEITA KUUSI KAPPALETTA, EI VIELÄ RANDOMILLA-->
+    <div class="index-main">                                                                  
+    <?php
+            $laskuri = 0;
+            while($rivi = $products_kysely->fetch()) {
+                if ($laskuri >= 6) {
+                    break;
+                }
+                echo "<div class='product-container'>";
+                echo "<h3>" . $rivi["ProductName"] . "</h3>";
+                //echo "<td>" . $rivi["Image"] . "</td>";
+                echo "<p>" . $rivi["Price"] . "</p>";
+                echo "</div>";
+                $laskuri++;
+            }
+        ?>
+    </div>
     <footer>
     </footer>
 </body>
