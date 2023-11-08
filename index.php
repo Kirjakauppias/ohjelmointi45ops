@@ -60,6 +60,7 @@
             </div>
         </div>
     </header>
+
     <!--TUOTTEITA KUUSI KAPPALETTA, EI VIELÄ RANDOMILLA-->
     <div class="index-main">                                                                  
     <?php
@@ -69,9 +70,9 @@
                     break;
                 }
                 echo "<div class='product-container'>";
-                echo "<h3>" . $rivi["ProductName"] . "</h3>";
-                //echo "<td>" . $rivi["Image"] . "</td>";
-                echo "<p>" . $rivi["Price"] . "</p>";
+                    echo "<h3>" . $rivi["ProductName"] . "</h3>";
+                    echo "<img src=product_images/". $rivi["ImageURL"] . ">";
+                    echo "<p>" . $rivi["Price"] . "</p>";
                 echo "</div>";
                 $laskuri++;
             }
