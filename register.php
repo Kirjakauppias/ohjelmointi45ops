@@ -15,15 +15,25 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            //Haetaan tietokannan viimeisin userID
+            $last_userID_query = $conn->query("SELECT MAX(UserID) AS LastUserID FROM users");
+            $last_userID_result = $last_userID_query->fetch();
+            $last_userID = $last_userID_result["LastUserID"];
+
+            //Lisätään viimeisintä UserID:tä yhdellä seuraavalle käyttäjälle
+            $userID = $last_userID + 1;
+
+            //Laitetaan käyttäjän syöttämät arvot muuttujiin
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $address = $_POST['address'];
-            $userType = 'Customer'; // Assuming all registered users are customers
-    
-            $stmt = $conn->prepare("INSERT INTO users (FirstName, LastName, Password, Email, Address, UserType) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$firstname, $lastname, $password, $email, $address, $userType]);
+            $userType = 'Customer'; //Oletuksena customer 
+            
+            //Lisätään uusi user data tietokantaan
+            $stmt = $conn->prepare("INSERT INTO users (UserID, FirstName, LastName, Password, Email, Address, UserType) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$userID, $firstname, $lastname, $password, $email, $address, $userType]);
     
             echo "Rekisteröinti onnistui!";
         } 

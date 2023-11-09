@@ -65,7 +65,7 @@
 
             <form action="checkLogin.php" method="post">
                 <div class="username"> 
-                    <input type="text" name="username" placeholder="Kirjoita käyttäjätunnus">
+                    <input type="text" name="username" placeholder="Kirjoita sähköposti">
                 </div>
                 <div class="password">
                     <input type="password" name="password" placeholder="Kirjoita salasana">
