@@ -38,7 +38,7 @@
         <!--MENU & KIRJAUTUMINEN ULOS & OSTOSKORI-->
         <div class="menu-log-cart-container">
             <div class="menu">
-                <a href=""><img src="images/menutext.png"></a>
+                <a href=""><img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
             </div>
             <div class="logout">
                 <form method="post" class="logout-button">
@@ -62,7 +62,24 @@
             <a href="products.php">KAIKKI TUOTTEET</a>
         </div>
     </nav>
-    
+
+    <!--TÄMÄ SCRIPTI ON CHATgpt:N KAUTTA-->
+    <!--KOODI TUO ESIIN NAVIGOINTIPALKIN KUN PAINAA "AVAA VALIKKO -KUVAA-->        
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const nav = document.querySelector('nav');
+            const logButton = document.querySelector('.log');
+
+            logButton.addEventListener('click', function() {
+                if (nav.style.display === 'none' || nav.style.display === '') {
+                    nav.style.display = 'flex';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
 <!-- <div>
