@@ -107,9 +107,19 @@ header {
     width: 150px;
 }
 
-.product-price {
+.product-display-container {
+    display: flex;
+}
+
+.product-display-container img {
+    height: 300px;
+    width: 250px;
+}
+
+.product-display-image {
 
 }
+
 
 /*FOOTER*/
 

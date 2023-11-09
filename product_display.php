@@ -70,11 +70,15 @@
 
     <div class="index-main">                                                                  
     <?php
-                echo "<div class='product-container'>";
+                echo "<div class='product-display-container'>";
+                echo "<div class='product-display-image'>";
+                    echo "<img src=product_images/". $product["ImageURL"] .">";
+                echo "</div>";
+                echo "<div class='product-display-detail'>";
                     echo "<h2>" . $product["ProductName"] . "</h2>";
                     echo "<p>" . $product["Description"] . "</p>";
                     echo "<p>Hinta: €" . $product["Price"] . "</p>";
-                    echo "<img src=product_images/". $product["ImageURL"] .">";
+                echo "</div>";
                 echo "</div>";
     ?>
     </div>
