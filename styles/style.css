@@ -37,21 +37,27 @@ header {
 nav {
     width: 50%;
     margin: 0 auto;
+    margin-top: 5px;
     display: none;                
 }
 
 nav a {
     color: aliceblue;
+    text-decoration-line: none;
 }
 
 .frontpage-link {
     background-color: black;
-    padding: 6px;     
+    padding: 6px;
+    border-radius: 8px;
+    margin: 4px;     
 }
 
 .all-products-link {
     background-color: black;
-    padding: 6px;  
+    padding: 6px;
+    border-radius: 8px;
+    margin: 4px;      
 }
 
 /* LOG & CART */
@@ -104,51 +110,6 @@ nav a {
     height: 100px;
 }
 
-
-/*PRODUCTS*/
-.index-main {
-    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
-    justify-content: center;
-}
-
-.product-container {
-    width: 30%;                         /*Tällä saan 3 tuotetta yhteen riviin*/
-    height: 22rem;
-    display: block;
-    text-align: center;                 /* Tämä laittoi otsikon, kuvan ja hinnan keskitettyä*/
-}
-
-.product-container img {
-    height: 200px;
-    width: 150px;
-}
-
-.product-display-container {
-    display: flex;
-}
-
-.product-display-container img {
-    height: 300px;
-    width: 250px;
-}
-
-.product-display-image {
-
-}
-
-
-/*FOOTER*/
-
-footer {
-    background-color: black;
-    height: 15rem;
-    width: 50%;
-    margin: 0 auto;
-}
-
 /*LOGIN -FORM*/
 .login-main {
     width: 50%;
@@ -163,4 +124,77 @@ footer {
 
 .register-container {
 
+}
+
+
+/*PRODUCTS*/
+.index-main {
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    margin: 0 auto;
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
+    justify-content: center;
+}
+
+.product-container {
+    width: 30%;                         /*Tällä saan 3 tuotetta yhteen riviin*/
+    height: 22rem;
+    display: block;
+    text-align: center;                 /* Tämä laittoi otsikon, kuvan ja hinnan keskitettyä*/
+}
+
+.product-container img {
+    height: 220px;
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+.product-price-cart-container {
+    background-color: black;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    align-items:center;
+    width: fit-content;
+}
+
+.product-price-cart-container p {
+    background-color: black;
+    color:aliceblue;
+    font-weight: bold;
+    padding: 4px;
+    margin: 5 5 5 5;
+}
+
+.product-price-cart-container img {
+    height: 25px;
+    width: 25px;
+    margin-right: 7px;
+    margin-top: 5px;
+}
+
+/*Tämä tyyli on yhden tuotteen esittely -sivulla*/
+.product-display-container {
+    display: flex;
+}
+
+.product-display-container img {
+    height: 300px;
+    width: 250px;
+}
+
+.product-display-image {
+
+}
+
+
+
+/*FOOTER*/
+
+footer {
+    background-color: black;
+    height: 15rem;
+    width: 50%;
+    margin: 0 auto;
 }
