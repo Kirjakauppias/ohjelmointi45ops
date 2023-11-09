@@ -132,6 +132,7 @@ nav a {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     margin: 0 auto;
     margin-top: 3rem;
+    margin-bottom: 8rem;
     display: flex;
     flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
     justify-content: center;
@@ -147,7 +148,7 @@ nav a {
 .product-container img {
     height: 220px;
     width: 180px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .product-price-cart-container {
@@ -168,8 +169,8 @@ nav a {
 }
 
 .product-price-cart-container img {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     margin-right: 7px;
     margin-top: 5px;
 }

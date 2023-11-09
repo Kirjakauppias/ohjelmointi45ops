@@ -88,7 +88,7 @@
         <!--REKISTERÖINTI-OHJEISTUS-->
         <div class="register-container">
             <h2>OLETKO UUSI ASIAKAS?</h2>
-            <a href="">Rekisteröidy tästä</a>
+            <a href="register.php">Rekisteröidy tästä</a>
         </div>
     </div>
     <footer>
