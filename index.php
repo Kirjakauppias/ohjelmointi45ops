@@ -71,7 +71,7 @@
                 }
                 echo "<div class='product-container'>";
                     echo "<h3>" . $rivi["ProductName"] . "</h3>";
-                    echo "<img src=product_images/". $rivi["ImageURL"] . ">";
+                    echo "<a href='product_display.php?ProductID=" . $rivi["ProductID"]. "'><img src=product_images/". $rivi["ImageURL"] . "></a>";
                     echo "<p>" . $rivi["Price"] . "</p>";
                 echo "</div>";
                 $laskuri++;
