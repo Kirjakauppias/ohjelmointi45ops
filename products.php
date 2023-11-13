@@ -32,12 +32,12 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
+<header>
         <!--BANNERI & SEARCH-->
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <h1>TUOTE-SOPPI</h1>
+                <img src="images/banner_small.png">
             </div>
         
             <!--SEARCHBAR-->
@@ -60,6 +60,16 @@
             </div>
         </div>
     </header>
+    
+    <!--NAVIGOINTI-->
+    <nav>
+        <div class="frontpage-link">
+            <a href="index.php">ETUSIVU</a>
+        </div>
+        <div class="all-products-link">
+            <a href="products.php">KAIKKI TUOTTEET</a>
+        </div>
+    </nav>
 
     <!--NAVIGOINTI-->
     <nav>

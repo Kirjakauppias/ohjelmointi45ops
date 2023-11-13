@@ -1,6 +1,12 @@
 body {
     margin: 0;
 }
+
+ol {
+    list-style-type: none;
+    padding-inline-start: 5px;
+}
+
 header {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     height: 12rem;
@@ -20,9 +26,14 @@ header {
     
 }
 
+.banner img {
+    height: 100px;
+    width: 330px;
+}
+
 /*SEARCHBAR*/
 .search-container {
-    
+    margin-left: 20px;
 }
 
 .search-container input[type="text"] {
@@ -65,6 +76,7 @@ nav a {
     display: flex;
     width: 55%;                          /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     justify-content: space-between;
+    margin-left: 20px;
 }
 
 .menu {
@@ -132,7 +144,7 @@ nav a {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     margin: 0 auto;
     margin-top: 3rem;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     display: flex;
     flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
     justify-content: center;
@@ -195,7 +207,26 @@ nav a {
 
 footer {
     background-color: black;
-    height: 15rem;
+    height: 12rem;
     width: 50%;
     margin: 0 auto;
+}
+
+.footer {
+    list-style-type: none;
+}
+
+.footer-header-body-container {
+    color:aliceblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-avainlogo {
+  
+}
+
+.footer-avainlogo img {
+    height: 150px;
+    width: 150px;
 }

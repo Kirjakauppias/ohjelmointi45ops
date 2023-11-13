@@ -37,8 +37,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         // If no match is found
-        header("Location: login.php?error=login");
-        exit();
+        //header("Location: login.php?error=login");
+        //exit();
     } catch (PDOException $e) {
         echo "Virhe: " . $e->getMessage();
     }

@@ -18,12 +18,12 @@
     } 
     ?>
 
-    <header>
+<header>
         <!--BANNERI & SEARCH-->
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <h1>TUOTE-SOPPI</h1>
+                <img src="images/banner_small.png">
             </div>
         
             <!--SEARCHBAR-->
@@ -39,14 +39,14 @@
                 <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
             </div>
             <div class="log">
-                <a href=""><img src="images/logtext.png"></a>
+                <a href="login.php"><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
                 <a href=""><img src="images/carttext.png"></a>
             </div>
         </div>
     </header>
-
+    
     <!--NAVIGOINTI-->
     <nav>
         <div class="frontpage-link">
@@ -75,11 +75,11 @@
                 </div>
                 <div class="error-message">
                     <?php
-                        if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
-                            if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
-                            echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
-                        }
-                        }
+                        //if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
+                          //  if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
+                            //echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
+                        //}
+                        //}
                     ?>
                 </div>
             </form>

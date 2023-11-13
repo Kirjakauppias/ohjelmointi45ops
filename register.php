@@ -52,8 +52,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+
+<header>
+        <!--BANNERI & SEARCH-->
+        <div class="banner-search-container">
+            <!--BANNERI-->
+            <div class="banner">
+                <img src="images/banner_small.png">
+            </div>
+        
+            <!--SEARCHBAR-->
+            <div class="search-container">
+                <input type="text" placeholder="Etsi tuotteita">
+                <button>Etsi</button>
+            </div>
+        </div>
+        
+        <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
+        <div class="menu-log-cart-container">
+            <div class="menu">
+                <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
+            </div>
+            <div class="log">
+                <a href="login.php"><img src="images/logtext.png"></a>
+            </div>
+            <div class="cart">
+                <a href=""><img src="images/carttext.png"></a>
+            </div>
+        </div>
+    </header>
+    
+    <!--NAVIGOINTI-->
+    <nav>
+        <div class="frontpage-link">
+            <a href="index.php">ETUSIVU</a>
+        </div>
+        <div class="all-products-link">
+            <a href="products.php">KAIKKI TUOTTEET</a>
+        </div>
+    </nav>
+
     <form action="register.php" method="post">
         <input type="text" name="firstname" placeholder="Etunimi"><br>
 

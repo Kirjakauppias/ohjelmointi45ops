@@ -25,7 +25,7 @@
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <h1>TUOTE-SOPPI</h1>
+                <img src="images/banner_small.png">
             </div>
         
             <!--SEARCHBAR-->
