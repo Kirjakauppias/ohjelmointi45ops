@@ -210,20 +210,33 @@ footer {
     height: 12rem;
     width: 50%;
     margin: 0 auto;
-}
-
-.footer {
-    list-style-type: none;
+    display: flex;
+    align-items: center;
+    
 }
 
 .footer-header-body-container {
+    align-content: center;
     color:aliceblue;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: center;*/
+    width: 100%;
+}
+
+.footer-osoitetiedot {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.asiakaspalvelu {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .footer-avainlogo {
-  
+    margin-left: auto; 
+    position: static;
+    padding-right: 30px;
 }
 
 .footer-avainlogo img {
