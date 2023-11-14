@@ -188,17 +188,41 @@ nav a {
 }
 
 /*Tämä tyyli on yhden tuotteen esittely -sivulla*/
+.product-display-main {
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
+    justify-content: center;
+}
+
 .product-display-container {
     display: flex;
+    width: 100%;
 }
 
 .product-display-container img {
     height: 300px;
     width: 250px;
+    margin-right: 10px;
 }
 
 .product-display-image {
+    border-right: 1px solid rgb(160, 159, 159);
+}
 
+.product-display-detail {
+    margin-left: 3rem;
+}
+
+.product-cart-text {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 4px;
 }
 
 

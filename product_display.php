@@ -88,21 +88,44 @@
         </div>
     </nav>
 
-    <div class="index-main">                                                                  
+    <div class="product-display-main">                                                                  
     <?php
                 echo "<div class='product-display-container'>";
-                echo "<div class='product-display-image'>";
-                    echo "<img src=product_images/". $product["ImageURL"] .">";
-                echo "</div>";
-                echo "<div class='product-display-detail'>";
-                    echo "<h2>" . $product["ProductName"] . "</h2>";
-                    echo "<p>" . $product["Description"] . "</p>";
-                    echo "<p>Hinta: €" . $product["Price"] . "</p>";
-                echo "</div>";
+                    echo "<div class='product-display-image'>";
+                        echo "<img src=product_images/". $product["ImageURL"] .">";
+                    echo "</div>";
+                    echo "<div class='product-display-detail'>";
+                        echo "<h2>" . $product["ProductName"] . "</h2>";
+                        echo "<p>" . $product["Description"] . "</p>";
+                        echo "<p>Hinta: €" . $product["Price"] . "</p>";
+                        echo "<br><br>";
+                        echo "<a href=''><p class='product-cart-text'>Lisää ostoskoriin</p></a>";
+                    echo "</div>";
                 echo "</div>";
     ?>
     </div>
     <footer>
+        <div class="footer-header-body-container">
+            <div class="footer-osoitetiedot">
+                <h4>YHTEYSTIEDOT</h4>
+                <ol>
+                    <li>Yritystie 1 a 2</li>
+                    <li>70100 Kuopio</li>
+                </ol>
+            </div>
+            <div class="asiakaspalvelu">
+                <h4>ASIAKASPALVELU</h4>
+                    <ol>
+                        <li>Asiakaspalvelu</li>
+                        <li>Ota yhteyttä</li>
+                        <li>Usein kysyttyä</li>
+                        <li>Maksutavat</li>
+                    </ol>
+            </div>
+            <div class="footer-avainlogo">
+                <img src="images/avain.png">
+            </div>
+        <div>
     </footer>
 
     <!--TÄMÄ SCRIPTI ON CHATgpt:N KAUTTA-->
