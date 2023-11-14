@@ -128,6 +128,8 @@ nav a {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
 }
 
 .login-container {
@@ -223,6 +225,22 @@ nav a {
     border-radius: 8px;
     width: fit-content;
     padding: 4px;
+}
+
+/*MEMBER-AREA*/
+
+.member-area-main {
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    margin: 0 auto;
+    height: 30rem;
+}
+
+/*SHOPPING CART*/
+
+.shopping-cart-main {
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    margin: 0 auto;
+    height: 30rem;
 }
 
 

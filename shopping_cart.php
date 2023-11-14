@@ -1,22 +1,8 @@
-<?php
-    session_start();
-
-        // Tarkistetaan, onko painiketta painettu
-        if(isset($_POST['logout'])) {
-            // Poistetaan käyttäjän istunto
-            session_destroy();
-            // Ohjataan käyttäjä takaisin index.php-sivulle
-            header("Location: index.php");
-            exit();
-        }
-        
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEMBER AREA</title>
+    <title>OSTOSKORI</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -35,24 +21,20 @@
             </div>
         </div>
         
-        <!--MENU & KIRJAUTUMINEN ULOS & OSTOSKORI-->
+        <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
         <div class="menu-log-cart-container">
             <div class="menu">
-                <a href=""><img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
+                <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
             </div>
-            <div class="logout">
-                <form method="post" class="logout-button">
-                    <button type="submit" name="logout">
-                        <img src="images/logout.png">
-                    </button>
-                </form>
+            <div class="log">
+                <a href="login.php"><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
                 <a href=""><img src="images/carttext.png"></a>
             </div>
         </div>
     </header>
-
+    
     <!--NAVIGOINTI-->
     <nav>
         <div class="frontpage-link">
@@ -63,7 +45,7 @@
         </div>
     </nav>
 
-    <div class="member-area-main">
+    <div class="shopping-cart-main">
     </div>
 
     <footer>
@@ -106,11 +88,5 @@
             });
         });
     </script>
-
 </body>
 </html>
-<!-- <div>
-        <form method="post" class="logout-button">
-            <input type="submit" name="logout" value="Kirjaudu ulos">
-        </form>
-    </div> -->
