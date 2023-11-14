@@ -1,14 +1,21 @@
 <?php
     session_start();
 
-        // Tarkistetaan, onko painiketta painettu
-        if(isset($_POST['logout'])) {
-            // Poistetaan käyttäjän istunto
-            session_destroy();
-            // Ohjataan käyttäjä takaisin index.php-sivulle
-            header("Location: index.php");
-            exit();
-        }
+    // Tarkistetaan, onko käyttäjä kirjautunut sisään
+    if (!isset($_SESSION["username"])) {
+        // Istuntoa ei ole asetettu, ohjataan käyttäjä kirjautumissivulle
+        header("Location: login.php");
+        exit();
+    }
+
+    // Tarkistetaan, onko painiketta painettu
+    if(isset($_POST['logout'])) {
+        // Poistetaan käyttäjän istunto
+        session_destroy();
+        // Ohjataan käyttäjä takaisin index.php-sivulle
+        header("Location: index.php");
+        exit();
+    }
         
 ?>
 
@@ -109,8 +116,3 @@
 
 </body>
 </html>
-<!-- <div>
-        <form method="post" class="logout-button">
-            <input type="submit" name="logout" value="Kirjaudu ulos">
-        </form>
-    </div> -->

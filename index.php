@@ -91,6 +91,8 @@
             }
         ?>
     </div>
+
+    <!--FOOTER -OSIO-->
     <footer>
         <div class="footer-header-body-container">
             <div class="footer-osoitetiedot">

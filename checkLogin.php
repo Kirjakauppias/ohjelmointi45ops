@@ -1,49 +1,41 @@
 <?php
-session_start(); //Tarvitaan sessiota varten
+session_start();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    //Jos vertailu on true
-    //Tarkistetaan onko käyttäjänimi ja salsana oikein
-    //1. otetaan tunnut ja salasana muuttujiin talteen
-    $inputUsername = $_POST["username"]; 
-    $inputPassword = $_POST["password"]; 
+$servername = "localhost";
+$databasename = "verkkokauppa";
+$username = "root";
+$dbpassword = "";
 
-    $servername = "localhost";
-    $databasename = "verkkokauppa";
-    $username = "root";
-    $dbpassword = "";
-
-    try {
-        // Luodaan yhteys MySLi tai PDO
-        $DBconn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $dbpassword);
-        // Tässä objektissa on tallessa tietokantayhteys
-
-        // Virhe asetuksia
-        $DBconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = "SELECT * FROM users";
-        $stmt = $DBconn->prepare($query);
+try {
+    // Luodaan yhteys MySLi tai PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $dbpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Tehdään tietokanta-kysely kirjautumista varten.
+    $login_query = "SELECT * FROM users";
+        $stmt = $conn->prepare($login_query);
         $stmt->execute();
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $usernameDB = $row['FirstName']; 
-            $passwordDB = $row['Password']; 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {  //Login-sivulta on täytetty kirjautumislomake
+        $usernameInput = $_POST["username"];    //Alustetaan muuttujat login-sivulta siirretyillä tiedoilla
+        $passwordInput = $_POST["password"];
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //Loopataan user-tietokannasta
+            $usernameDB = $row['Email'];                //Alustetaan muuttujat user-tietokannasta olevilla tiedoilla / rivi
+            $passwordDB = $row['Password'];
 
-            if ($inputUsername == $usernameDB && password_verify($inputPassword, $passwordDB)) {
+            if ($usernameInput == $usernameDB && $passwordInput == $passwordDB){    //Jos login-lomakkeella annetut tiedot täsmäävät tietokannan riviin
                 //Tiedot oikein
-                //Lisätään koodi, jotta käyttäjä on "kirjautunut sisään" ja tietoja ei tarvitse syöttää joka kerta
+                //Lisätään koodi, jotta käyttäjä on "kirjautunut sisään".
                 $_SESSION["username"] = $usernameDB; 
                 header("Location: memberArea.php");
                 exit();
             }
         }
-        // If no match is found
-        //header("Location: login.php?error=login");
-        //exit();
-    } catch (PDOException $e) {
-        echo "Virhe: " . $e->getMessage();
+        header("Location: login.php?error=login");
+        exit();
     }
-} else {
-    header("Location: login.php");
-    exit();
+}
+catch (PDOException $e) {
+    echo "Virhe: " . $e->getMessage();
 }
 ?>

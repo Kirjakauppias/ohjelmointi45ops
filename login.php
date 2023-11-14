@@ -75,11 +75,11 @@
                 </div>
                 <div class="error-message">
                     <?php
-                        //if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
-                          //  if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
-                            //echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
-                        //}
-                        //}
+                        if(isset($_GET["error"])) {  // Tarkistetaan onko avain (muuttuja) olemassa, ennen kuin sitä käytetään.
+                            if($_GET["error"] == "login") { // Saadaan virhe, jos "error"-avain ei ole olemassa
+                                echo "<p>Käyttäjätunnus ja salasana eivät täsmää!</p>";
+                            }
+                        }
                     ?>
                 </div>
             </form>
