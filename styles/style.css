@@ -227,6 +227,17 @@ nav a {
     padding: 4px;
 }
 
+/*HAKUTULOKSET*/
+.search-results-main{
+    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
+    justify-content: center;
+}
+
 /*MEMBER-AREA*/
 
 .member-area-main {
