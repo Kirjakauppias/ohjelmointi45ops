@@ -42,7 +42,7 @@
                 <a href="login.php"><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
-                <a href=""><img src="images/carttext.png"></a>
+                <a href="shopping_cart.php"><img src="images/carttext.png"></a>
             </div>
         </div>
     </header>

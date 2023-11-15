@@ -14,9 +14,18 @@
         //PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $products_kysely = $conn->prepare("SELECT * FROM products"   );
+        $products_kysely = $conn->prepare("SELECT * FROM products");
 
         $products_kysely->execute();
+
+        // Tarkistetaan, onko hakuterminä annettu
+        if (isset($_GET['search'])) {
+            $searchTerm = $_GET['search'];
+            // Suoritetaan haku tietokannasta hakutermin perusteella
+            $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductName LIKE :searchTerm");
+            $products_kysely->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+            $products_kysely->execute();
+        }
     }
     catch (PDOException $e) {
         // Yhteys epäonnistui
@@ -43,8 +52,12 @@
         
             <!--SEARCHBAR-->
             <div class="search-container">
-                <input type="text" placeholder="Etsi tuotteita">
-                <button>Etsi</button>
+                <form action="index.php" method="get">
+                    <input type="text" name="search" placeholder="Etsi tuotteita">
+                    <button type="submit">
+                        Etsi
+                    </button>
+                </form>
             </div>
         </div>
         
@@ -57,7 +70,7 @@
                 <a href="login.php"><img src="images/logtext.png"></a>
             </div>
             <div class="cart">
-                <a href=""><img src="images/carttext.png"></a>
+                <a href="shopping_cart.php"><img src="images/carttext.png"></a>
             </div>
         </div>
     </header>

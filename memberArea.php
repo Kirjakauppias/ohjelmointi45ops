@@ -8,6 +8,24 @@
         exit();
     }
 
+    $servername = "localhost";
+    $databasename = "verkkokauppa";
+    $username = "root";
+    $dbpassword = "";
+
+try {
+    // Luodaan yhteys MySLi tai PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $dbpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Tehdään tietokanta-kysely kirjautumista varten.
+    $login_query = "SELECT * FROM users";
+        $stmt = $conn->prepare($login_query);
+        $stmt->execute();
+    }
+        catch (PDOException $e) {
+        echo "Virhe: " . $e->getMessage();
+    }
+
     // Tarkistetaan, onko painiketta painettu
     if(isset($_POST['logout'])) {
         // Poistetaan käyttäjän istunto
@@ -71,6 +89,9 @@
     </nav>
 
     <div class="member-area-main">
+        <?php
+            echo "<h2>Tervetuloa " . $_SESSION["username"] . "!</h2>";
+        ?>
     </div>
 
     <footer>
