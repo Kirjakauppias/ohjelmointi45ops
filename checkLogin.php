@@ -1,20 +1,7 @@
 <?php
-session_start();
-
-$servername = "localhost";
-$databasename = "verkkokauppa";
-$username = "root";
-$dbpassword = "";
-
-try {
-    // Luodaan yhteys MySLi tai PDO
-    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Tehdään tietokanta-kysely kirjautumista varten.
-    $login_query = "SELECT * FROM users";
-        $stmt = $conn->prepare($login_query);
-        $stmt->execute();
-
+    require 'includes/dbconn.php';
+    require 'includes/dbenquiry.php';
+    
     if($_SERVER["REQUEST_METHOD"] == "POST") {  //Login-sivulta on täytetty kirjautumislomake
         $usernameInput = $_POST["username"];    //Alustetaan muuttujat login-sivulta siirretyillä tiedoilla
         $passwordInput = $_POST["password"];
@@ -34,8 +21,4 @@ try {
         header("Location: login.php?error=login");
         exit();
     }
-}
-catch (PDOException $e) {
-    echo "Virhe: " . $e->getMessage();
-}
 ?>

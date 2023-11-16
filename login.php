@@ -1,64 +1,18 @@
 <?php
-   session_start();
-?>
+    session_start();
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIRJAUTUMIS-SIVU</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <?php
-        //Tarkistetaan, onko käyttäjä jo kirjautunut
-        if(isset($_SESSION["username"])) {
-            //Siirretään käyttäjä memberArea-sivulle
-            header("Location: memberArea.php");
+    //Tarkistetaan, onko käyttäjä jo kirjautunut
+    if(isset($_SESSION["username"])) {
+        //Siirretään käyttäjä memberArea-sivulle
+        header("Location: memberArea.php");
+        exit();
     } 
-    ?>
 
-<header>
-        <!--BANNERI & SEARCH-->
-        <div class="banner-search-container">
-            <!--BANNERI-->
-            <div class="banner">
-                <img src="images/banner_small.png">
-            </div>
-        
-            <!--SEARCHBAR-->
-            <div class="search-container">
-                <input type="text" placeholder="Etsi tuotteita">
-                <button>Etsi</button>
-            </div>
-        </div>
-        
-        <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
-        <div class="menu-log-cart-container">
-            <div class="menu">
-                <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
-            </div>
-            <div class="log">
-                <a href="login.php"><img src="images/logtext.png"></a>
-            </div>
-            <div class="cart">
-                <a href="shopping_cart.php"><img src="images/carttext.png"></a>
-            </div>
-        </div>
-    </header>
-    
-    <!--NAVIGOINTI-->
-    <nav>
-        <div class="frontpage-link">
-            <a href="index.php">ETUSIVU</a>
-        </div>
-        <div class="all-products-link">
-            <a href="products.php">KAIKKI TUOTTEET</a>
-        </div>
-    </nav>
-
+    include 'partials/doc.php';
+    include 'partials/header.php';
+    include 'partials/nav.php';
+?>
     <div class="login-main">
-        
         <!--KIRJAUTUMISLOMAKE-->
         <div class="login-container">
             <h2>KIRJAUTUMINEN</h2>
@@ -91,45 +45,8 @@
             <a href="register.php">Rekisteröidy tästä</a>
         </div>
     </div>
-    <footer>
-        <div class="footer-header-body-container">
-            <div class="footer-osoitetiedot">
-                <h4>YHTEYSTIEDOT</h4>
-                <ol>
-                    <li>Yritystie 1 a 2</li>
-                    <li>70100 Kuopio</li>
-                </ol>
-            </div>
-            <div class="asiakaspalvelu">
-                <h4>ASIAKASPALVELU</h4>
-                    <ol>
-                        <li>Asiakaspalvelu</li>
-                        <li>Ota yhteyttä</li>
-                        <li>Usein kysyttyä</li>
-                        <li>Maksutavat</li>
-                    </ol>
-            </div>
-            <div class="footer-avainlogo">
-                <img src="images/avain.png">
-            </div>
-        <div>
-    </footer>
-
-    <!--TÄMÄ SCRIPTI ON CHATgpt:N KAUTTA-->
-    <!--KOODI TUO ESIIN NAVIGOINTIPALKIN KUN PAINAA "AVAA VALIKKO -KUVAA-->        
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const nav = document.querySelector('nav');
-            const logButton = document.querySelector('.log');
-
-            logButton.addEventListener('click', function() {
-                if (nav.style.display === 'none' || nav.style.display === '') {
-                    nav.style.display = 'flex';
-                } else {
-                    nav.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+<?php
+    include 'partials/footer.php';
+    include 'scripts/navScript.php';
+    include 'partials/htmlEnd.php';
+?>
