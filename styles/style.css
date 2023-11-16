@@ -34,10 +34,6 @@ main {
     width: 35%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
 }
 
-.banner {
-    
-}
-
 .banner img {
     height: 100px;
     width: 330px;
@@ -91,26 +87,13 @@ nav a {
     margin-left: 20px;
 }
 
-.menu {
-
-}
-
 .menu img {
     width: 150px;
     height: 100px;
 }
-
-.log {
-
-}
-
 .log img {
     width: 120px;
     height: 100px;
-}
-
-.logout {
-
 }
 
 .logout img {
@@ -125,10 +108,6 @@ nav a {
     cursor: pointer;
 }
 
-.cart {
-
-}
-
 .cart img {
     width: 120px;
     height: 100px;
@@ -141,11 +120,6 @@ nav a {
     display: flex;
     justify-content: space-between;
 }
-
-.register-container {
-
-}
-
 
 /*PRODUCTS*/
 .index-main {
