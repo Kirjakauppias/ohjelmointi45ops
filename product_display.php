@@ -10,6 +10,7 @@
             $noproduct = true;  //URL:ssä ei ollut ProductID:tä joten siitä virheilmoitus
         }
     
+    include 'includes/dbsearchbar.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';

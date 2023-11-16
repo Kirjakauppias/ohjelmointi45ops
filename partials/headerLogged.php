@@ -6,10 +6,14 @@
                 <img src="images/banner_small.png">
             </div>
         
-            <!--SEARCHBAR-->
-            <div class="search-container">
-                <input type="text" placeholder="Etsi tuotteita">
-                <button>Etsi</button>
+          <!--SEARCHBAR-->
+          <div class="search-container">
+                <form action="index.php" method="get">
+                    <input type="text" name="search" placeholder="Etsi tuotteita">
+                    <button type="submit">
+                        Etsi
+                    </button>
+                </form>
             </div>
         </div>
         

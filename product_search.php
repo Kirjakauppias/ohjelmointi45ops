@@ -14,6 +14,7 @@
             exit();
         }
     
+    include 'includes/dbsearchbar.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';

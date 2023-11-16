@@ -23,8 +23,9 @@
             $stmt->execute([$userID, $firstname, $lastname, $password, $email, $address, $userType]);
     
             echo "Rekisteröinti onnistui!";
-        }     
-
+        }
+             
+    include 'includes/dbsearchbar.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';

@@ -1,5 +1,7 @@
 <?php
-    session_start();
+   require 'includes/dbconn.php';
+   require 'includes/dbenquiry.php';
+   include 'includes/dbsearchbar.php';
 
     //Tarkistetaan, onko käyttäjä jo kirjautunut
     if(isset($_SESSION["username"])) {

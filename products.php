@@ -1,6 +1,7 @@
 <?php
     require 'includes/dbconn.php';
     require 'includes/dbenquiry.php';
+    include 'includes/dbsearchbar.php';
 
     include 'partials/doc.php';
     include 'partials/header.php';

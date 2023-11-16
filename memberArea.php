@@ -17,6 +17,7 @@
         exit();
     }
 
+    include 'includes/dbsearchbar.php';
     include 'partials/doc.php';       
     include 'partials/headerLogged.php';
     include 'partials/nav.php'; 
