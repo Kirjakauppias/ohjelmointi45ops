@@ -3,7 +3,9 @@
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <img src="images/banner_small.png">
+                <a href="index.php" alt="Etusivu">
+                    <img src="images/banner_small.png">
+                </a>
             </div>
         
             <!--SEARCHBAR-->

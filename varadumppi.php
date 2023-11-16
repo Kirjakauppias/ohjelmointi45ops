@@ -110,3 +110,108 @@ try {
     }
 //} echo "<p>Tuotetta ei löytynyt!</p>";  //URL:ssä ei ollut ProductID:tä joten siitä virheilmoitus
 ?>
+<?php
+// Tietokanta yhteys
+    $servername = "localhost";
+    $databasename = "verkkokauppa";
+    $username = "root";
+    $password = "";
+
+    // Yritetään
+    try {
+        // Luodaan yhteys, joka on PDO objekti
+        $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
+
+        // PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Tarkistetaan, onko hakuterminä annettu
+        if (isset($_GET['search'])) {
+            $searchTerm = $_GET['search'];
+            // Suoritetaan haku tietokannasta hakutermin perusteella
+            $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductName LIKE :searchTerm");
+            $products_kysely->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+            $products_kysely->execute();
+        } else {
+            // Jos hakuterminä ei ole annettu, ohjataan käyttäjä takaisin etusivulle
+            header("Location: index.php");
+            exit();
+        }
+    } catch (PDOException $e) {
+        // Yhteys epäonnistui
+        echo "". $e->getMessage();
+    }
+?>
+
+<?php
+    // Tietokanta yhteys
+    // Palvelimen nimi muuttujaan
+    $servername = "localhost";
+    $databasename = "verkkokauppa";
+    $username = "root";
+    $password = "";
+    
+    //Yritetään
+    try {
+        //Luodaan yhteys, joka on PDO objekti
+        $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
+
+        //PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $products_kysely = $conn->prepare("SELECT * FROM products"   );
+
+        $products_kysely->execute();
+    }
+    catch (PDOException $e) {
+        // Yhteys epäonnistui
+        echo "". $e->getMessage();
+    }
+?>
+
+<?php
+    // Tietokanta yhteys
+    // Palvelimen nimi muuttujaan
+    $servername = "localhost";
+    $databasename = "verkkokauppa";
+    $username = "root";
+    $password = "";
+    
+    //Yritetään
+    try {
+        //Luodaan yhteys, joka on PDO objekti
+        $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
+
+        //PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            //Haetaan tietokannan viimeisin userID
+            $last_userID_query = $conn->query("SELECT MAX(UserID) AS LastUserID FROM users");
+            $last_userID_result = $last_userID_query->fetch();
+            $last_userID = $last_userID_result["LastUserID"];
+
+            //Lisätään viimeisintä UserID:tä yhdellä seuraavalle käyttäjälle
+            $userID = $last_userID + 1;
+
+            //Laitetaan käyttäjän syöttämät arvot muuttujiin
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $address = $_POST['address'];
+            $userType = 'Customer'; //Oletuksena customer 
+            
+            //Lisätään uusi user data tietokantaan
+            $stmt = $conn->prepare("INSERT INTO users (UserID, FirstName, LastName, Password, Email, Address, UserType) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$userID, $firstname, $lastname, $password, $email, $address, $userType]);
+    
+            echo "Rekisteröinti onnistui!";
+        } 
+           
+        
+    }
+    catch (PDOException $e) {
+        // Yhteys epäonnistui
+        echo "". $e->getMessage();
+    }
