@@ -122,6 +122,12 @@ nav a {
     justify-content: space-between;
 }
 
+/*REGISTER*/
+
+.register-form-container {
+    width: 100%;
+}
+
 /*PRODUCTS*/
 .index-main {
     width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/

@@ -32,7 +32,10 @@
 ?>
 
     <main>
-    <form action="register.php" method="post">
+        <div class="register-form-container">
+        <h3>Voit rekisteröityä sivuille täyttämällä alla olevan lomakkeen.</h3>
+        
+        <form action="register.php" method="post">
         <input type="text" name="firstname" placeholder="Etunimi"><br>
 
         <input type="text" name="lastname" placeholder="Sukunimi"><br>
@@ -44,7 +47,8 @@
         <input type="text" name="address" placeholder="Osoite"><br>
 
         <input type="submit" value="Rekisteröidy">
-    </form>
+        </form>
+        </div>
     </main>
 <?php
     include 'partials/footer.php';
