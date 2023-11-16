@@ -9,7 +9,7 @@ $laskuri = 0;
                 echo "<h3>" . $rivi["ProductName"] . "</h3>";
                 echo "<a href='product_display.php?ProductID=" . $rivi["ProductID"]. "'><img src=product_images/". $rivi["ImageURL"] . "></a>";
                 echo "<div class='product-price-cart-container'>";
-                echo "<p>€ " . $rivi["Price"] . "</p>" . "<img src='images/cart_small.png'>";
+                echo "<p>€ " . $rivi["Price"] . "</p>" . "<a href=''><img src='images/cart_small.png'>";
                 echo "</div>";
             echo "</div>";
             $laskuri++;

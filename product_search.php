@@ -17,17 +17,21 @@
         exit();
     }
 ?>
+<main>
     <div class="search-results-main">
         <?php
             while ($rivi = $products_kysely->fetch()) {
                 echo "<div class='product-container'>";
                 echo "<h3>" . $rivi["ProductName"] . "</h3>";
                 echo "<a href='product_display.php?ProductID=" . $rivi["ProductID"]. "'><img src=product_images/". $rivi["ImageURL"] . "></a>";
-                echo "<p>" . $rivi["Price"] . "</p>";
+                echo "<div class='product-price-cart-container'>";
+                echo "<p>€ " . $rivi["Price"] . "</p>" . "<a href=''><img src='images/cart_small.png'>";
+                echo "</div>";
                 echo "</div>";
             }
         ?>
     </div>
+</main>
 <?php
     include 'partials/footer.php';
     include 'scripts/navScript.php';

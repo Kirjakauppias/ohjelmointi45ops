@@ -15,6 +15,7 @@
     include 'partials/header.php';
     include 'partials/nav.php';
 
+    echo "<main>";
     echo "<div class='product-display-main'>";                                                                  
                 echo "<div class='product-display-container'>";
                     echo "<div class='product-display-image'>";
@@ -29,6 +30,7 @@
                     echo "</div>";
                 echo "</div>";
     echo "</div>";
+    echo "</main>";
 
     include 'partials/footer.php';
     include 'scripts/navScript.php';

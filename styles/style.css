@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     margin: 0;
     min-height: 100vh; /*100 on käyttäjän näytön korkeus*/
+    font-size: 16px;
 }
 
 ol {
@@ -171,10 +172,6 @@ nav a {
 
 /*Tämä tyyli on yhden tuotteen esittely -sivulla*/
 .product-display-main {
-    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
-    margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 6rem;
     display: flex;
     flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
     justify-content: center;
@@ -191,10 +188,6 @@ nav a {
     margin-right: 10px;
 }
 
-.product-display-image {
-    border-right: 1px solid rgb(160, 159, 159);
-}
-
 .product-display-detail {
     margin-left: 3rem;
 }
@@ -209,10 +202,7 @@ nav a {
 
 /*HAKUTULOKSET*/
 .search-results-main{
-    width: 50%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
-    margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 6rem;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
     justify-content: center;
