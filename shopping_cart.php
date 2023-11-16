@@ -4,8 +4,8 @@
     include 'partials/header.php';
     include 'partials/nav.php';
 
-    echo "<div class='shopping-cart-main'>";
-    echo "</div>";
+    echo "<main>";
+    echo "</main>";
 
     include 'partials/footer.php';
     include 'scripts/navScript.php';

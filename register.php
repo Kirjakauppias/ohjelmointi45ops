@@ -31,7 +31,7 @@
     include 'partials/nav.php';
 ?>
 
-    <div class="index-main">
+    <main>
     <form action="register.php" method="post">
         <input type="text" name="firstname" placeholder="Etunimi"><br>
 
@@ -45,7 +45,7 @@
 
         <input type="submit" value="Rekisteröidy">
     </form>
-    </div>
+    </main>
 <?php
     include 'partials/footer.php';
     include 'scripts/navScript.php';

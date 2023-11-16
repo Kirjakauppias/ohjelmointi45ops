@@ -1,23 +1,21 @@
 <?php
-        require 'includes/dbconn.php';
-
-        // Tarkistetaan, onko hakuterminä annettu
-        if (isset($_GET['search'])) {
-            $searchTerm = $_GET['search'];
-            // Suoritetaan haku tietokannasta hakutermin perusteella
-            $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductName LIKE :searchTerm");
-            $products_kysely->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
-            $products_kysely->execute();
-        } else {
-            // Jos hakuterminä ei ole annettu, ohjataan käyttäjä takaisin etusivulle
-            header("Location: index.php");
-            exit();
-        }
-    
-    include 'includes/dbsearchbar.php';
+    require 'includes/dbconn.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';
+
+     // Tarkistetaan, onko hakuterminä annettu
+     if (isset($_GET['search'])) {
+        $searchTerm = $_GET['search'];
+        // Suoritetaan haku tietokannasta hakutermin perusteella
+        $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductName LIKE :searchTerm");
+        $products_kysely->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+        $products_kysely->execute();
+    } else {
+        // Jos hakuterminä ei ole annettu, ohjataan käyttäjä takaisin etusivulle
+        header("Location: index.php");
+        exit();
+    }
 ?>
     <div class="search-results-main">
         <?php
