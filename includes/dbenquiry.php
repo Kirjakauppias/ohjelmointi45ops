@@ -1,7 +1,13 @@
 <?php
     //Haetaan tuotteita randomilla
     //Index-sivulla
-    $products_kysely = $conn->prepare("SELECT * FROM products ORDER BY RAND()");
+    $random_products_kysely = ("SELECT * FROM products ORDER BY RAND()");
+    $random_stmt = $conn->prepare($random_products_kysely);
+    $random_stmt->execute();
+
+    
+
+    $products_kysely = $conn->prepare("SELECT * FROM products");
     $products_kysely->execute();
 
     //Tehdään tietokanta-kysely kirjautumista varten

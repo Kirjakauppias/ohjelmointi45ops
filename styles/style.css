@@ -158,7 +158,7 @@ nav a {
     border-radius: 8px;
     display: flex;
     align-items:center;
-    width: fit-content;
+    width: 7rem;
 }
 
 .product-price-cart-container p {
@@ -175,6 +175,20 @@ nav a {
     margin-right: 7px;
     margin-top: 5px;
 }
+
+.product-price-cart-container button {
+    border-width: 0;
+    padding: 0;
+    /*height: 19px;*/
+    /*width: 19px;*/
+    background-color: black;
+}
+
+.product-price-cart-container form {
+   
+    margin: 0;
+} 
+
 
 /*Tämä tyyli on yhden tuotteen esittely -sivulla*/
 .product-display-main {

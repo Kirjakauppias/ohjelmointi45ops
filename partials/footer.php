@@ -15,6 +15,7 @@
                         <li>Ota yhteyttä</li>
                         <li>Usein kysyttyä</li>
                         <li>Maksutavat</li>
+                        <li>Kuljetustavat</li>
                     </ol>
             </div>
             <div class="footer-avainlogo">
