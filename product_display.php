@@ -26,7 +26,7 @@
                         echo "<p>" . $product["Description"] . "</p>";
                         echo "<p>Hinta: €" . $product["Price"] . "</p>";
                         echo "<br><br>";
-                        echo "<a href=''><p class='product-cart-text'>Lisää ostoskoriin</p></a>";
+                        echo "<a href='shopping_cart.php?product_id=" . $product["ProductID"] . "'><p class='product-cart-text'>Lisää ostoskoriin</p></a>";
                     echo "</div>";
                 echo "</div>";
     echo "</div>";
