@@ -1,4 +1,8 @@
 <?php
+    //HOX! PUUTUU KOODI: JOS TUOTTEITA EI LÖYDY HAKUSANAN PERUSTEELLA,
+    //TULOSTUS "TUOTETTA EI LÖYTYNYT!"
+
+    
     require 'includes/dbconn.php';
     include 'partials/doc.php';
     include 'partials/header.php';

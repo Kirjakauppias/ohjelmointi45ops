@@ -25,7 +25,9 @@
                 <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
             </div>
             <div class="log">
-                <a href="login.php"><img src="images/logtext.png"></a>
+                <a href='login.php'><img src='images/logtext.png' alt='Logtext Image'></a>
+            
+                
             </div>
             <div class="cart">
                 <a href="shopping_cart.php"><img src="images/carttext.png"></a>

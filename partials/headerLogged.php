@@ -30,7 +30,7 @@
                 </form>
             </div>
             <div class="cart">
-                <a href=""><img src="images/carttext.png"></a>
+                <a href="shopping_cart.php?from_member_area=true"><img src="images/carttext.png"></a>
             </div>
         </div>
 </header>

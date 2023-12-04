@@ -7,7 +7,7 @@
         header("Location: login.php");
         exit();
     }
-
+    $_SESSION['from_member_area'] = true;
     // Tarkistetaan, onko painiketta painettu
     if(isset($_POST['logout'])) {
         // Poistetaan käyttäjän istunto
@@ -21,6 +21,8 @@
     include 'partials/doc.php';       
     include 'partials/headerLogged.php';
     include 'partials/nav.php'; 
+
+    
 
     echo "<div class='member-area-main'>";
             echo "<h2>Tervetuloa " . $_SESSION["username"] . "!</h2>";
