@@ -10,7 +10,7 @@
     
 
 
-    require 'includes/dbconn.php';
+    require 'includes_other/dbconn.php';
     //session_unset(); // Poistetaan sessiot
     //session_destroy();
     
@@ -20,7 +20,7 @@
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    include 'includes/dbsearchbar.php';
+    include 'includes_other/dbsearchbar.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';
@@ -168,4 +168,3 @@ if (isset($_POST['reset_cart'])) {
     include 'scripts/navScript.php';
     include 'partials/htmlEnd.php';
 ?>
-

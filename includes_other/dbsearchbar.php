@@ -10,4 +10,3 @@
         header("Location: product_search.php?search=" . urlencode($searchTerm));
         exit();
     }
-?>

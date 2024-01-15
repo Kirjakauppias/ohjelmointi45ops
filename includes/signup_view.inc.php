@@ -25,13 +25,15 @@ function check_signup_errors() {
 function signup_inputs() {
     if (isset($_SESSION["signup_data"]["username"]) &&
         isset($_SESSION["errors_signup"]["username_taken"]) === false) {
-            echo '<input type="text" name="username" placeholder="Username">
+            echo '<input type="text" name="username" placeholder="Käyttäjätunnus">
              value="'.htmlspecialchars($_SESSION["signup_data"]["username"]).'">';
     } else {
-        echo '<input type="text" name="username" placeholder="Username">';
+        echo '<input type="text" name="username" placeholder="Käyttäjätunnus">';
+        echo '<br>';
     }
 
-    echo '<input type="password" name="password" placeholder="Password">';
+    echo '<input type="password" name="password" placeholder="Salasana">';
+    echo '<br>';
 
     if (isset($_SESSION["signup_data"]["email"]) &&
         isset($_SESSION["errors_signup"]["email_used"]) === false &&
@@ -40,6 +42,7 @@ function signup_inputs() {
              value="'. htmlspecialchars($_SESSION["signup_data"]["email"]) .'">';
     } else {
         echo '<input type="text" name="email" placeholder="E-Mail">';
+        echo '<br>';
     }
 
     unset($_SESSION["signup_data"]);

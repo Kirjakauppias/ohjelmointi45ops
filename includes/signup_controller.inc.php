@@ -43,6 +43,6 @@ function is_email_registered(object $pdo_conn, string $email) {
 }
 
 // Kirjoita toiminnallisuus: Käyttäen modelia apuna, kirjoita käyttäjän luonti
-function create_user(object $pdo_conn, string $username, string $password, string $email) {
-    set_user($pdo_conn, $username, $password, $email);
+function create_user(object $pdo_conn, string $username, string $password, string $email, string $firstname, string $lastname, string $address) {
+    set_user($pdo_conn, $username, $password, $email, $firstname, $lastname, $address);
 }

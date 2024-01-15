@@ -1,5 +1,4 @@
 <?php
-    session_start();
     // Tietokanta yhteys
     // Palvelimen nimi muuttujaan
     $servername = "localhost";
@@ -19,4 +18,3 @@
         // Yhteys epäonnistui
         echo "". $e->getMessage();
     }
-?>

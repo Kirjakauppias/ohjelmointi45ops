@@ -19,4 +19,3 @@ $laskuri = 0;
             echo "</div>";
             $laskuri++;
         }
-?>

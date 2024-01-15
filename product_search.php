@@ -3,7 +3,7 @@
     //TULOSTUS "TUOTETTA EI LÖYTYNYT!"
 
     
-    require 'includes/dbconn.php';
+    require 'includes_other/dbconn.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';

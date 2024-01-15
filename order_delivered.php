@@ -11,4 +11,4 @@
     include 'partials/footer.php';
     include 'scripts/navScript.php';
     include 'partials/htmlEnd.php';
-?>
+

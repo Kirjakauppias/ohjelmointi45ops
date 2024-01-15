@@ -116,6 +116,19 @@ nav a {
 
 /*LOGIN -FORM*/
 
+.login-signup-container {
+    width: 100%;
+    display: inherit;
+    justify-content: center;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.signup-form {
+    width: 100%;
+}
 .login-register-container {
     width: 100%;
     display: flex;

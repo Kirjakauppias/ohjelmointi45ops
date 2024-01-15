@@ -1,4 +1,4 @@
- <!--TÄMÄ SCRIPTI ON CHATgpt:N KAUTTA-->
+<!--TÄMÄ SCRIPTI ON CHATgpt:N KAUTTA-->
     <!--KOODI TUO ESIIN NAVIGOINTIPALKIN KUN PAINAA "AVAA VALIKKO -KUVAA-->        
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -14,3 +14,4 @@
             });
         });
     </script>
+    

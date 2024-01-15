@@ -22,4 +22,3 @@
     $products_query->bindParam(':productID', $productID);
     $products_query->execute();
     $product = $products_query->fetch();
-?>
