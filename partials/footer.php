@@ -16,6 +16,7 @@
                         <li>Usein kysyttyä</li>
                         <li>Maksutavat</li>
                         <li>Kuljetustavat</li>
+                        <li><a href="admin_login.php">Admin</a></li>
                     </ol>
             </div>
             <div class="footer-avainlogo">
