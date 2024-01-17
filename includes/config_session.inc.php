@@ -8,6 +8,7 @@ ini_set("session.use_only_cookies", 1);
 // Ei hyväksytä SessionID:tä käyttäjältä, vaan generoi tilanne uuden turvallisen id:n
 // Joten hyökkääjä ei voi syöttää käyttäjälle ennalta tiedetttyä id:tä, jolla hän voi
 // kaapata käyttäjän Session.
+ini_set('session.cookie_httponly', 1);
 ini_set("session.use_strict_mode", 1);
 
 session_set_cookie_params([

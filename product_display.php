@@ -26,7 +26,10 @@
                         echo "<p>" . $product["Description"] . "</p>";
                         echo "<p>Hinta: €" . $product["Price"] . "</p>";
                         echo "<br><br>";
-                        echo "<a href='shopping_cart.php?product_id=" . $product["ProductID"] . "'><p class='product-cart-text'>Lisää ostoskoriin</p></a>";
+                        echo "<form action='shopping_cart.php' method='post'>";
+                        echo "<input type='hidden' name='product_id' value='$product[ProductID]'>";
+                        echo "<button type='submit'>Lisää ostoskoriin</button>";
+                    echo "</form>";
                     echo "</div>";
                 echo "</div>";
     echo "</div>";

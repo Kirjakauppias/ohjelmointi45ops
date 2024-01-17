@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include 'partials/doc.php';
 include 'partials/header.php';
@@ -22,23 +21,12 @@ if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) ) {
     
     }else {
         // Jos käyttäjä ei ole kirjautunut sisään, ohjataan takaisin login-sivulle
-        header("Location: login.php");
-        exit();
+        echo "Et ole kirjatunut sisään.";
     }
-
-
-    // Tarkistetaan, onko painiketta painettu
-    if(isset($_POST['logout'])) {
-        // Poistetaan käyttäjän istunto
-        session_destroy();
-        // Ohjataan käyttäjä takaisin index.php-sivulle
-        header("Location: index.php");
-        exit();
-    }
-    unset($_SESSION["from_login_page"]);
 ?>
 </main>
 <?php
     include 'partials/footer.php';
+    include 'scripts/navScript.php';
     include 'partials/htmlEnd.php';
 ?>

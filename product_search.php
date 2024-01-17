@@ -31,7 +31,7 @@
                 echo "<div class='product-price-cart-container'>";
                     echo "<p>€ " . $rivi["Price"] . "</p>";
 
-                    echo "<form action='shopping_cart.php' method='get'>";
+                    echo "<form action='shopping_cart.php' method='post'>";
                         echo "<input type='hidden' name='product_id' value='$rivi[ProductID]'>";
                         echo "<button type='submit'><img src='images/cart_small.png' alt='Lisää ostoskoriin'></button>";
                     echo "</form>";

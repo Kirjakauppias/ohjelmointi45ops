@@ -1,25 +1,8 @@
 <?php
-    //ONGELMA: Sivua kun päivittää, viimeisin tuoteen määrä lisääntyy yhdellä.
-
-    // Tarkista, onko from_member_area-parametri asetettu
-    $fromMemberArea = isset($_GET['from_member_area']) && $_GET['from_member_area'] === 'true';
-
-    // Poista istunnon arvo, jotta se ei vaikuta tuleviin sivulatauksiin
-    unset($_SESSION['from_member_area']);
-
     
 
 
     require 'includes_other/dbconn.php';
-    //session_unset(); // Poistetaan sessiot
-    //session_destroy();
-    
-    $query = "SELECT * FROM products";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     include 'includes_other/dbsearchbar.php';
     include 'partials/doc.php';
     include 'partials/header.php';
@@ -29,138 +12,99 @@
     echo "<div class='shopping_cart_table'>";
     
 
-    if (isset($_GET["product_id"]) && is_numeric($_GET["product_id"])) {
-        $product_id = filter_var($_GET["product_id"], FILTER_VALIDATE_INT);
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
+        $product_id = filter_var($_POST['product_id'], FILTER_VALIDATE_INT);
     
         if ($product_id !== false && $product_id > 0) {
-
-            // Haetaan tietokannasta suurin oleva ProductID
-            $query = "SELECT MAX(ProductID) as maxProductID FROM products";
-            $stmt = $conn->prepare($query);
-            $stmt->execute();
-            $max_result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Varmistetaan ettei kirjoiteta liian isoa ProductID -numeroa
-            if ($product_id <= $max_result["maxProductID"]) {
-
-                $newShoppingCart = [
-                "productID" => $product_id,
-                "count" => 1, // Oletuksena 1
+            // Hae tuotteen tiedot tietokannasta
+            $product_query = "SELECT * FROM products WHERE ProductID = ?";
+            $product_stmt = $conn->prepare($product_query);
+            $product_stmt->bindParam(1, $product_id, PDO::PARAM_INT);
+            $product_stmt->execute();
+            $product_info = $product_stmt->fetch(PDO::FETCH_ASSOC);
+    
+            if ($product_info) {
+                // Luodaan ostoskorin tuote
+                $cart_item = [
+                    "productID" => $product_info["ProductID"],
+                    "productName" => $product_info["ProductName"],
+                    "price" => $product_info["Price"],
+                    "quantity" => 1, // Oletuksena 1
+                    //"userID" => $loggedInUserID,
                 ];
     
-                $productExists = false;
+                // Luodaan sessioon ostoskori, jos sitä ei ole
+                if (!isset($_SESSION["cart"])) {
+                    $_SESSION["cart"] = [];
+                }
     
                 // Tarkista, onko tuote jo ostoskorissa
-                if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
-                    foreach ($_SESSION["products"] as &$existingProduct) {
-                        if ($existingProduct["productID"] === $newShoppingCart["productID"]) {
-                            $existingProduct["count"]++;
-                            $productExists = true;
-                            break;
-                        }
+                $product_exists = false;
+                foreach ($_SESSION["cart"] as &$existing_item) {
+                    if ($existing_item["productID"] === $cart_item["productID"]) {
+                        $existing_item["quantity"]++;
+                        $product_exists = true;
+                        break;
                     }
                 }
     
-                // Luodaan sessioon tyhjä, vain jos sitä ei ole
-                if (!isset($_SESSION["products"])) {
-                    // Luodaan tyhjä lista
-                    $_SESSION["products"] = []; // Shopping cart session
-                }           
-    
-                // Jos tuotea ei löytynyt, tallennetaan uusi tuote sessioon
-                if ($productExists === false) {
-                     $_SESSION["products"][] = $newShoppingCart;
+                // Jos tuotetta ei löytynyt, lisää se ostoskoriin
+                if (!$product_exists) {
+                    $_SESSION["cart"][] = $cart_item;
                 }
-            } else {
-                echo "Virheellinen product_id";
             }
-        } else {
-            echo "Virheellinen product_id";
         }
     }
-
-    echo "<h2>Ostoskori</h2>";
-
-    if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
+    
+    // Tarkista, onko nollaa ostoskori -painiketta painettu
+    if (isset($_POST['reset_cart'])) {
+        // Tyhjennä ostoskori
+        unset($_SESSION["cart"]);
+        header("Location: shopping_cart.php"); // Ohjaa takaisin ostoskorin sivulle
+        exit;
+    }
+    
+    // Tulosta ostoskori
+    echo "<h1>Ostoskori</h1>";
+    
+    if (!empty($_SESSION["cart"])) {
         echo "<table border='1'>";
-            echo "<tr> 
-                    <th>Tuotteen nimi</th>
-                    <th>Hinta</th>
-                    <th>Kappalemäärä</th>
-                </tr>";
-        
-                foreach ($_SESSION["products"] as $cartItem) {
-
-                $query = "SELECT * FROM products WHERE ProductID = :productID";
-                $stmt = $conn->prepare($query);
-                $stmt->bindParam(":productID", $cartItem["productID"]);
-                $stmt->execute();
-                $productInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-                
-                
-                echo "<tr>";
-                echo "<td>" . $productInfo["ProductName"] . "</td>";
-                echo "<td>€" . $productInfo["Price"] . "</td>";
-                echo "<td>" . $cartItem["count"] . "</td>";
-                echo "</tr>";
-            }
-
-            $totalPrice = 0;
-
-        foreach ($_SESSION["products"] as $cartItem) {
-    $query = "SELECT * FROM products WHERE ProductID = :productID";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":productID", $cartItem["productID"]);
-    $stmt->execute();
-    $productInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $subtotal = $cartItem["count"] * $productInfo["Price"];
-    $totalPrice += $subtotal;
-}
-            echo "<tr>
-                    <td colspan='2'><strong>Yhteensä</strong></td>
-                    <td><strong>€" . number_format($totalPrice, 2) . "</strong></td>
-                </tr>";
+        echo "<tr> 
+                <th>Tuotteen nimi</th>
+                <th>Hinta</th>
+                <th>Kappalemäärä</th>
+            </tr>";
+    
+        foreach ($_SESSION["cart"] as $cart_item) {
+            echo "<tr>";
+            echo "<td>" . $cart_item["productName"] . "</td>";
+            echo "<td>€" . $cart_item["price"] . "</td>";
+            echo "<td>" . $cart_item["quantity"] . "</td>";
+            echo "</tr>";
+        }
+    
+        $total_price = array_sum(array_column($_SESSION["cart"], 'price'));
+    
+        echo "<tr>
+                <td colspan='2'><strong>Yhteensä</strong></td>
+                <td><strong>€" . number_format($total_price, 2) . "</strong></td>
+            </tr>";
         echo "</table>";
+?>
+<form action="order_process.php" method="post">
+    <input type="submit" name="place_order" value="Tilaa">
+</form>
+<?php
+    
+         // Lisää nollaa ostoskori -painike
+         echo "<form method='post' action='testi_shopping_cart.php'>";
+         echo "<input type='submit' name='reset_cart' value='Nollaa ostoskori'>";
+         echo "</form>";
+         
     } else {
         echo "Ostoskori on tyhjä.";
     }
-
-    echo "</div>";
-
-    echo "<form method='post' action=''>";
-        echo "<input type='submit' name='reset_cart' value='Nollaa ostoskori'>";
-    echo "</form>";
-
-// Nollaa ostoskori jos lomaketta on painettu
-if (isset($_POST['reset_cart'])) {
-    session_destroy();
-    header("Location: shopping_cart.php");
-} 
-
 ?>
-<div class="register-form-container">
-<form action="order_delivered.php" method="post">
-        <!-- Näytä ostoskorin tiedot (tuotteiden nimet, hinnat, kappalemäärät jne.) -->
-        <?php
-        if (!empty($_SESSION["products"])) {
-            foreach ($_SESSION["products"] as $cartItem) {
-                echo "<input type='hidden' name='product_ids[]' value='" . $cartItem["productID"] . "'>";
-                echo "<input type='hidden' name='quantities[]' value='" . $cartItem["count"] . "'>";
-            }
-        } 
-        ?>
-        
-        <!-- Toimitustiedot -->
-        <input type="text" name="firstname" placeholder="Etunimi" required><br>
-        <input type="text" name="lastname" placeholder="Sukunimi" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="address" placeholder="Osoite" required><br>
-        
-        <!-- Lähetä tilaus-painike -->
-        <input type="submit" value="Lähetä tilaus">
-    </form>
-        </div>
     </main>
 <?php
 

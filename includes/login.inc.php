@@ -36,8 +36,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($errors) {
             $_SESSION["errors_login"] = $errors;
-
-            header("Location: ../login.php");
+            //HOX!! Alla oleva koodin on testiä varten.
+            header("Location: ../index.php");
+            //header("Location: ../login.php");
 
             $pdo_conn = null;
             $stmt = null;
@@ -60,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Asetetaan istuntoon tunniste siitä, että käyttäjä on saapunut memberArea.php-sivulle //HOX, uutta koodia!
         $_SESSION["from_login_page"] = true;
+        //HOX!! Seuraava koodi on testi-sivua varten:
         // Asetetaan istuntoon tunnisteet jolla memberArea.php voi näyttää käyttäjälle omat tietonsa. //HOX, uutta koodia!
         // Nämä kannattanee laittaa funktion sisään
         $_SESSION['username'] = $result['Username'];
@@ -68,8 +70,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['firstname'] = $result['FirstName'];
         $_SESSION['lastname'] = $result['LastName'];
         $_SESSION['address'] = $result['Address'];
-
-        header("Location: ../memberArea.php?login=success");
+        //HOX!! Alla oleva location testi-sivulle!
+        header("Location: ../index.php?login=success");
+        //header("Location: ../memberArea.php?login=success");
 
         $pdo_conn = null;
         $stmt = null;
@@ -81,6 +84,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 else {
-    header("Location: ../login.php");
+    header("Location: ../index.php");
     die();
 }

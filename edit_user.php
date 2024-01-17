@@ -80,5 +80,10 @@
         <!-- esimerkiksi voi poistaa required attribuutin tai email inputin => text inputtiin -->
         <input type="submit" name="submit" value="Update">
     </form>
+
+    <!-- Add a log-out button -->
+    <form action="includes/logout.inc.php" method="post">
+                        <button type="submit" name="logout">Kirjaudu ulos</button>
+                    </form>
 </body>
 </html>
