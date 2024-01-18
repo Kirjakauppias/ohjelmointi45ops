@@ -11,7 +11,6 @@
         <div class="banner-search-container">
             <!--BANNERI-->
             <div class="banner">
-                <!--HOX Muutos tehty testiä varten (ennen index.php)-->
                 <a href="index.php" alt="Etusivu">
                     <img src="images/banner_small.png">
                 </a>
@@ -19,7 +18,9 @@
         
             <!--SEARCHBAR-->
             <div class="search-container">
-                <form action="index.php" method="get">
+                <!--
+                <form action="index.php" method="get"> -->
+                <form method="get">
                     <input type="text" name="search" placeholder="Etsi tuotteita">
                     <button type="submit">
                         Etsi
@@ -38,7 +39,7 @@
                 <a href="shopping_cart.php"><img src="images/carttext.png"></a>
             </div>
 
-            <div>
+            <div class="login-container">
                 <?php
                 //output_username();
                 if (!isset($_SESSION["from_login_page"])) {
@@ -47,7 +48,7 @@
                         <form action="includes/login.inc.php" method="post">
                             <input type="text" name="username" placeholder="Käyttäjätunnus"><br>
                             <input type="password" name="password" placeholder="Salasana"><br>
-                            <button>Log in</button>
+                            <button>Kirjaudu</button>
                         </form>
                 <?php 
 

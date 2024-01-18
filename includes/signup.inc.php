@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ];
             $_SESSION["signup_data"] = $signupData;
 
-            header("Location: ../login.php");
+            header("Location: ../register.php");
 
             $pdo_conn = null;
             $stmt = null;
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         create_user($pdo_conn, $username, $password, $email, $firstname, $lastname, $address);
-        header("Location: ../login.php?signup=success");
+        header("Location: ../register.php?signup=success");
 
         // Katkaistaan yhteys
         $pdo_conn = null;
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../login.php");
+    header("Location: ../register.php");
     die();
 }
 

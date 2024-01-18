@@ -9,4 +9,7 @@
         <div class="frontpage-link">
             <a href="memberArea.php">OMAT TIEDOT</a>
         </div>
+        <div class="frontpage-link">
+            <a href="register.php">TEE TUNNUKSET</a>
+        </div>
 </nav>
