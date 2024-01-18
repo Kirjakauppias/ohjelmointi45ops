@@ -15,21 +15,22 @@
         return $products_kysely->fetchAll();
     }
     
+    //Funktio joka hakee tietyn tuotteen ID:n perusteella
+    //product_display.php -sivulla
+    function getProductByID($conn, $productID){
+        $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductID = :productID");
+        $products_kysely->bindParam(':productID', $productID);
+        $products_kysely->execute();
+        return $products_kysely->fetch();
+    }
     
-    //Tehdään tietokanta-kysely kirjautumista varten
-    //checkLogin-sivulla
-    $login_query = "SELECT * FROM users";
-    $stmt = $conn->prepare($login_query);
-    $stmt->execute();
-    
-    //Tehdään tietokanta-kysely jossa esitetään tietty tuote
-    //product_display-sivulla
-    $products_query = $conn->prepare("SELECT * FROM products WHERE ProductID = :productID");
-    $products_query->bindParam(':productID', $productID);
-    $products_query->execute();
-    $product = $products_query->fetch();
-
     //SÄILYTETÄÄN VARMUUDEN VUOKSI
-    /*  $random_products_kysely = ("SELECT * FROM products ORDER BY RAND()");
-        $random_stmt = $conn->prepare($random_products_kysely);
-        $random_stmt->execute();*/
+    /*Funktio tietokantakyselylle kirjautumista varten
+    //Tällä hetkellä ei ole käytössä
+    function getUserDataForLogin($conn) {
+        $login_query = "SELECT * FROM users";
+        $stmt = $conn->prepare($login_query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }*/
+

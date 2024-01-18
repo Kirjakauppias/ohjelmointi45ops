@@ -1,6 +1,6 @@
 <?php
     //SIVU JOSSA NÄYTETÄÄN NE TUOTTEET, JOTKA LÖYTYIVÄT SEARCHBAR -HAKUKENTÄSTÄ
-    require 'includes_other/dbconn.php';
+    require_once 'includes_other/dbconn.php';
     include 'partials/doc.php';
     include 'partials/header.php';
     include 'partials/nav.php';

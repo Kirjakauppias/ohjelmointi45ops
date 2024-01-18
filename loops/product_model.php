@@ -17,3 +17,42 @@ function printProduct($rivi) {
             echo "</div>";
     echo "</div>";
 }
+
+//Tämä funktio on product_display.php -sivulle
+function printOneProduct($product){
+    echo "<div class='product-display-main'>";                                                                  
+                echo "<div class='product-display-container'>";
+                    echo "<div class='product-display-image'>";
+                        echo "<img src=product_images/". $product["ImageURL"] .">";
+                    echo "</div>";
+                    echo "<div class='product-display-detail'>";
+                        echo "<h2>" . $product["ProductName"] . "</h2>";
+                        echo "<p>" . $product["Description"] . "</p>";
+                        echo "<p>Hinta: €" . $product["Price"] . "</p>";
+                        echo "<br><br>";
+                        echo "<form action='shopping_cart.php' method='post'>";
+                            echo "<input type='hidden' name='product_id' value='$product[ProductID]'>";
+                            echo "<button type='submit'>Lisää ostoskoriin</button>";
+                    echo "</form>";
+                    echo "</div>";
+                echo "</div>";
+    echo "</div>";
+    }
+
+//Funktio joka tulostaa tuotteen $_GET['ProductID'] -perusteella
+function displayGetProduct($conn){
+    // Tarkistetaan, onko ProductID asetettu URL-parametreihin
+    if (isset($_GET['ProductID'])){
+        $productID = $_GET['ProductID'];    //Haetaan URL:stä oleva ProductID muuttujaan
+        $product = getProductByID($conn, $productID);
+
+            // Tarkistetaan, että $product on taulukko ja että sillä on odotetut indeksit ennen tulostusta
+            if (is_array($product) && isset($product['ProductName'])) {
+                printOneProduct($product); // Funktio tulostaa tuotteen jossa muuttujana on $_GET['ProductID'];
+            } else {
+                echo "Tuotetta ei löytynyt!";
+            }
+    } else {
+        echo "Tuotetta ei löytynyt!";
+    }
+}

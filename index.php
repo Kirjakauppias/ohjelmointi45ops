@@ -10,7 +10,7 @@
     include 'partials/nav.php';                      //Navigointi -koodi on täällä.
     
     echo "<main>";                                                                  
-    include 'loops/prCounter.loop.php';              //Tuotteiden esityskoodi on täällä.
+        include 'loops/prCounter.loop.php';          //Tuotteiden esityskoodi on täällä.
     echo "</main>";
     
     include 'partials/footer.php';                   //Footerin koodin on täällä.
