@@ -8,10 +8,13 @@
         return $random_stmt->fetchAll();
     }
     
+    //Funktio joka hakee kaikki tuotteet
+    function getAllProducts($conn) {
+        $products_kysely = $conn->prepare("SELECT * FROM products");
+        $products_kysely->execute();
+        return $products_kysely->fetchAll();
+    }
     
-    
-    $products_kysely = $conn->prepare("SELECT * FROM products");
-    $products_kysely->execute();
     
     //Tehdään tietokanta-kysely kirjautumista varten
     //checkLogin-sivulla
