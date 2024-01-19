@@ -35,6 +35,21 @@
         return $tuoteTiedot;
     }
 
+    function getProductsBySearchTerm($conn, $searchTerm) {
+        $products_query = "SELECT * FROM products WHERE ProductName LIKE :searchTerm";
+        $products_stmt = $conn->prepare($products_query);
+        $products_stmt->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+        $products_stmt->execute();
+        return $products_stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /*function searchProduct($conn, $searchTerm) {
+        $products_kysely = $conn->prepare("SELECT * FROM products WHERE ProductName LIKE :searchTerm");
+        $products_kysely->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+        $products_kysely->execute();
+        return $products_kysely->fetchAll(PDO::FETCH_ASSOC);
+    }*/
+
     
     
     //SÄILYTETÄÄN VARMUUDEN VUOKSI

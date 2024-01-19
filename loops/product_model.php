@@ -67,3 +67,13 @@ function createCartItem($productInfo) {
         //"userID" => $loggedInUserID,
     ];
 }
+
+function printSearchedProducts($products) {
+    if (empty($products)) {
+        echo "Tuotteita ei löytynyt!";
+    } else {
+        foreach ($products as $rivi) {
+            printProduct($rivi);
+        }
+    }
+}

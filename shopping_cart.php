@@ -47,13 +47,14 @@ includeUpperElements();
             //Tulostetaan ostoskori
             echo "<h1>Ostoskori</h1>";
             
+            //Jos otoskori on olemassa.
             if (!empty($_SESSION["cart"])) {
                 echo "<table border='1'>";
-                echo "<tr> 
-                <th>Tuotteen nimi</th>
-                <th>Hinta</th>
-                <th>Kappalemäärä</th>
-                </tr>";
+                    echo "<tr> 
+                        <th>Tuotteen nimi</th>
+                        <th>Hinta</th>
+                        <th>Kappalemäärä</th>
+                    </tr>";
                 
                 foreach ($_SESSION["cart"] as $cart_item) {
                     echo "<tr>";
@@ -62,20 +63,23 @@ includeUpperElements();
                     echo "<td>" . $cart_item["quantity"] . "</td>";
                     echo "</tr>";
                 }
+                //Haetaan kaikki 'price' -avaimen arvot $_SESSION["cart"] -taulukosta.
                 $total_price = array_sum(array_column($_SESSION["cart"], 'price'));
+                //number_format(numero, desimaalien määrä) 
                 echo "<tr>
-                <td colspan='2'><strong>Yhteensä</strong></td>
-                <td><strong>€" . number_format($total_price, 2) . "</strong></td>
+                    <td colspan='2'><strong>Yhteensä</strong></td>
+                    <td><strong>€" . number_format($total_price, 2) . "</strong></td> 
                 </tr>";
                 echo "</table>";
                 ?>
-            <form action="order_process.php" method="post">
-                <input type="submit" name="place_order" value="Tilaa">
-            </form>
+                <!--Lomake joka lähettää tilauksen-->
+                <form action="order_process.php" method="post">
+                    <input type="submit" name="place_order" value="Tilaa">
+                </form>
             <?php
             // Lisää nollaa ostoskori -painike
             echo "<form method='post' action='shopping_cart.php'>";
-            echo "<input type='submit' name='reset_cart' value='Nollaa ostoskori'>";
+                echo "<input type='submit' name='reset_cart' value='Nollaa ostoskori'>";
             echo "</form>";
         } else {
             echo "Ostoskori on tyhjä.";
