@@ -23,6 +23,16 @@
         $products_kysely->execute();
         return $products_kysely->fetch();
     }
+
+    //Funktio jota käytetään shopping_cart.php -sivulla
+    function getProductToCart($conn, $tuoteID) {
+        $tuoteKysely = "SELECT * FROM products WHERE ProductID = ?";
+        $tuoteValmistelu = $conn->prepare($tuoteKysely);
+        $tuoteValmistelu->bindParam(1, $tuoteID, PDO::PARAM_INT);
+        $tuoteValmistelu->execute();
+        $tuoteTiedot = $tuoteValmistelu->fetch(PDO::FETCH_ASSOC);
+        return $tuoteTiedot;
+    }
     
     //SÄILYTETÄÄN VARMUUDEN VUOKSI
     /*Funktio tietokantakyselylle kirjautumista varten
