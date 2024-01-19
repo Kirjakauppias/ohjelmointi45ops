@@ -1,4 +1,5 @@
 <?php
+    require_once 'dbconn.php';
     //Haetaan tuotteita randomilla
     //Index-sivulla
     function getRandomProducts($conn){
@@ -33,6 +34,8 @@
         $tuoteTiedot = $tuoteValmistelu->fetch(PDO::FETCH_ASSOC);
         return $tuoteTiedot;
     }
+
+    
     
     //SÄILYTETÄÄN VARMUUDEN VUOKSI
     /*Funktio tietokantakyselylle kirjautumista varten

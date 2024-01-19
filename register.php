@@ -1,15 +1,11 @@
 <?php
+include 'includeFunctions.php';
+require 'includes_other/dbconn.php';
+require 'includes_other/dbenquiry.php';
+include 'includes_other/dbsearchbar.php';
 
-    require 'includes_other/dbconn.php';
-    require 'includes_other/dbenquiry.php';
-    include 'includes_other/dbsearchbar.php';
-
-    include 'partials/doc.php';
-    include 'partials/header.php';
-    include 'partials/nav.php';
-?>
-
-<main>   
+includeUpperElements();
+?>   
     <div class="signup-form">
             <h3>Luo tunnukset</h3>
 
@@ -27,10 +23,6 @@
                 check_signup_errors();
             ?>
     </div>
-</main>
-
 <?php
-    include 'partials/footer.php';
-    include 'scripts/navScript.php';
-    include 'partials/htmlEnd.php';
+includeBottomElements();
 ?>

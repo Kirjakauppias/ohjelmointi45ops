@@ -1,12 +1,8 @@
 <?php
-    //SIVU JOSSA NÄYTETÄÄN NE TUOTTEET, JOTKA LÖYTYIVÄT SEARCHBAR -HAKUKENTÄSTÄ
-    require_once 'includes_other/dbconn.php';
-    include 'partials/doc.php';
-    include 'partials/header.php';
-    include 'partials/nav.php';
-
-    echo "<main>";
-        
+//SIVU JOSSA NÄYTETÄÄN NE TUOTTEET, JOTKA LÖYTYIVÄT SEARCHBAR -HAKUKENTÄSTÄ
+include 'includeFunctions.php';
+require_once 'includes_other/dbconn.php';
+includeUpperElements();
     // Tarkistetaan, onko searchabariin annettu joku sana joka haetaan osoitekentästä ?search=
      if (isset($_GET['search'])) {      
         $searchTerm = $_GET['search'];  //Annetaan muuttujalle osoitekentän arvo.
@@ -22,14 +18,6 @@
         echo "Tuotteita ei löytynyt!";
         //header("Location: index.php");
         exit();
-    }
-
-        
-        
-    
-echo "</main>";
-
-    include 'partials/footer.php';
-    include 'scripts/navScript.php';
-    include 'partials/htmlEnd.php';
+    }    
+includeBottomElements();
 ?>

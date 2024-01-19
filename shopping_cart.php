@@ -1,13 +1,11 @@
 <?php
-    
-    require_once 'includes_other/dbconn.php';
-    require_once 'includes_other/dbenquiry.php';
-    require_once 'loops/product_model.php';
-    include 'includes_other/dbsearchbar.php';
-    include 'includeFunctions.php';
-    includeUpperElements();
+require_once 'includes_other/dbconn.php';
+require_once 'includes_other/dbenquiry.php';
+require_once 'loops/product_model.php';
+include 'includes_other/dbsearchbar.php';
+include 'includeFunctions.php';
+includeUpperElements();
 
-    echo "<main>";
         echo "<div class='shopping_cart_table'>";
             //Tarkistetaan että käyttäjä on painanut tuotteen ostoskoria.
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
@@ -91,10 +89,5 @@
             header("Location: shopping_cart.php"); // Ohjaa takaisin ostoskorin sivulle
             exit();
         }
-?>
-</main>
-<?php
-    include 'partials/footer.php';
-    include 'scripts/navScript.php';
-    include 'partials/htmlEnd.php';
+includeBottomElements();
 ?>

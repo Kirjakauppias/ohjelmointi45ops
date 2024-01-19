@@ -1,11 +1,8 @@
 <?php
+include 'includeFunctions.php';
 require 'includes_other/dbconn.php';
 include 'includes_other/dbsearchbar.php';
-include 'partials/doc.php';
-include 'partials/header.php';
-include 'partials/nav.php';
-
-echo "<main>";
+includeUpperElements();
 echo "<div class='shopping_cart_table'>";
 // Tulosta kaikki $_SESSION -tiedot
 //echo "Print_r:\n";
@@ -47,9 +44,5 @@ if (isset($_SESSION['id'])) {
 $conn = null;
 
 echo "</div>";
-echo "</main>";
-
-include 'partials/footer.php';
-include 'scripts/navScript.php';
-include 'partials/htmlEnd.php';
+includeBottomElements();
 ?>

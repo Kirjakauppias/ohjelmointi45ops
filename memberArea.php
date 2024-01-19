@@ -1,11 +1,6 @@
 <?php
-
-include 'partials/doc.php';
-include 'partials/header.php';
-include 'partials/nav.php';
-?>
-<main>
-<?php
+include 'includeFunctions.php';
+includeUpperElements();
 // Tarkista, onko saavuttu login-sivulta
 if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) ) {
     $username = $_SESSION['user_username'];
@@ -23,10 +18,5 @@ if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) ) {
         // Jos käyttäjä ei ole kirjautunut sisään, ohjataan takaisin login-sivulle
         echo "Et ole kirjatunut sisään.";
     }
-?>
-</main>
-<?php
-    include 'partials/footer.php';
-    include 'scripts/navScript.php';
-    include 'partials/htmlEnd.php';
+includeBottomElements();
 ?>
