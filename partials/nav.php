@@ -10,6 +10,6 @@
             <a href="memberArea.php">OMAT TIEDOT</a>
         </div>
         <div class="frontpage-link">
-            <a href="register.php">TEE TUNNUKSET</a>
+            <a href="register.php">LUO TUNNUKSET</a>
         </div>
 </nav>

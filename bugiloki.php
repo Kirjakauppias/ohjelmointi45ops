@@ -9,3 +9,5 @@
 
 19.1.2024: dbsearchbar.php /        Jostain syystä hakupalkki ei löydä vain yhtä tuotetta vaan tulostaa kaikki.
            product_search.php       <!--KORJATTU-->
+
+21.1.2024: memberArea.php           Muokattava näkymä oikeaksi. Tietokantaan tallennus puuttuu.
