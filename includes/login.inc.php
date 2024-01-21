@@ -70,6 +70,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['firstname'] = $result['FirstName'];
         $_SESSION['lastname'] = $result['LastName'];
         $_SESSION['address'] = $result['Address'];
+        $_SESSION['password'] = $result['Password'];
         //HOX!! Alla oleva location testi-sivulle!
         header("Location: ../index.php?login=success");
         //header("Location: ../memberArea.php?login=success");

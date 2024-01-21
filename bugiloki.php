@@ -11,3 +11,6 @@
            product_search.php       <!--KORJATTU-->
 
 21.1.2024: memberArea.php           Muokattava näkymä oikeaksi. Tietokantaan tallennus puuttuu.
+                                    <!--TIETOKANTAAN TALLENNUS OK-->
+
+

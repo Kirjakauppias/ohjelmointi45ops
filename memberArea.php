@@ -1,63 +1,81 @@
 <?php
+require_once 'includes_other/dbconn.php';
 include 'includeFunctions.php';
 includeUpperElements();
 // Tarkista, onko saavuttu login-sivulta
+echo "<div class='member-container'>";
+    echo "<div>";
 if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) ) {
-    $username = $_SESSION['user_username'];
-    echo "Tervetuloa $username!";
-
+    
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         //Kästellään lomakkeen tietoja tässä:
         //Päivitä tietokantaan tarvittaessa.
 
-        //Tarkistetaan, onko annettu salasana ja onko se oikea:
-        if(!empty($_POST['password'])){
-            //Salasana on annettu, tarkista se.
-            $enteredPassword = $_POST['password'];
+        //Tarkistetaan, onko annettu uusi salasana ja onko se oikea:
+        if(!empty($_POST['new_password']) && $_POST['new_password'] === $_POST['confirm_password']){
+            //Uusi salasana on annettu ja vahvistettu oikein.
+            //Päivitetään tietokantaan käyttäjän tiedot, mukaan lukien salasana
+                
+                $updatedFirstname = $_POST['firstname'];
+                $updatedLastname = $_POST['lastname'];
+                $updatedAddress = $_POST['address'];
+                $updatedUsername = $_POST['username'];
+                $updatedPassword = password_hash($_POST['new_password'], PASSWORD_DEFAULT); //Salasana haetaan ennen tallentamista.
+                $userId = $_SESSION['id'];
 
-            //Haetaan tietokannasta salasana.
-            $storedPasswordHash = $_SESSION['password'];
+                //Suojaudutaan SQL-injektiota vastaan.
+                $updateQuery = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Address=?, Username=?, Password=? WHERE UserID=?");
+                $updateQuery->execute([$updatedFirstname, $updatedLastname, $updatedAddress, $updatedUsername, $updatedPassword, $userId]);
 
-            //Tarkistetaan salasana hashin avulla.
-            if (password_verify($enteredPassword, $storedPasswordHash)){
-                //Salana on oikein. Päivitetään muut tiedot.
-                echo "Tietosi on päivitetty!";
-            } else {
-                echo "Virheellinen salasana!";
-            }
-        } else {
+                echo "Tietosi on päivitetty! Uudet tiedot tulevat näkyviin kun kirjaudut uudelleen.";
+            } elseif (empty($_POST['new_password'])) {
             //Salasanaa ei annettu, päivitä muut tiedot.
-            echo "Tietosi on päivitetty!";
+            $updatedFirstname = $_POST['firstname'];
+            $updatedLastname = $_POST['lastname'];
+            $updatedAddress = $_POST['address'];
+            $updatedUsername = $_POST['username'];
+            $userId = $_SESSION['id'];
+
+            $updateQuery = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Address=?, Username=? WHERE UserID=?");
+            $updateQuery->execute([$updatedFirstname, $updatedLastname, $updatedAddress, $updatedUsername, $userId]);
+            echo "Tietosi on päivitetty! Uudet tiedot tulevat näkyviin kun kirjaudut uudelleen.";
+        } else {
+            echo "Uusi salasana ja vahvistus eivät täsmää!";
         }
-    } else {
-        //Näytetään lomake käyttäjän tietojen muokkaamiseen.
-        echo "
-            <form method='post' action=''>
-                <label for='firstname'>Etunimi:</label>
-                    <input type='text' name='firstname' value='{$_SESSION['firstname']}'><br>
-                <label for='lastname'>Sukunimi:</label>
-                    <input type='text' name='lastname' value='{$_SESSION['lastname']}'><br>
-                <label for='address'>Osoite:</label>
-                    <input type='text' name='address' value='{$_SESSION['address']}'><br>
-                <label for='password'>Salasana:</label>
-                    <input type='password' name='password'><br>
-                    
-                    <input type='submit' value='Tallenna'>
-            </form>
-            ";
-    }
-    echo "<pre>";
-    echo "Käyttäjätunnus: " . $_SESSION['username'] . "<br>";
-    echo "Email: " . $_SESSION['email'] . "<br>";
-    echo "Etunimi: " . $_SESSION['firstname'] . "<br>";
-    echo "Sukunimi: " . $_SESSION['lastname'] . "<br>";
-    echo "Osoite: " . $_SESSION['address'] . "<br>";
-    echo "</pre>";
-} 
-else {
-        //Käyttäjä ei ole kirjautunut sisään
-        echo "Et ole kirjatunut sisään.";
-    }
+    } 
+        //echo "<div>";
+        echo "<h2>Henkilökohtaiset tietosi:</h2>";
+        echo "<pre>";
+            printUserDetails();
+        echo "</pre>";
+        echo "</div>";
+
+    // Näytetään Päivitä tietosi -painike ja lisätään JavaScript, joka piilottaa ja näyttää lomakkeen tarvittaessa
+    echo "<div class='update-form'>";
+        echo "<button onclick='toggleForm()'>Päivitä tietosi</button>";
+            echo "<div id='update-form' style='display:block;'>";
+                // Näytetään lomake käyttäjän tietojen muokkaamiseen.
+                createUpdateForm();
+            echo "</div>";
+    echo "</div>";
+echo "</div>";
+} else {
+    // Käyttäjä ei ole kirjautunut sisään
+    echo "Et ole kirjautunut sisään.";
+}
+echo "</div>";
+echo "</div>";
     
 includeBottomElements();
 ?>
+
+<script>
+    function toggleForm() {
+        var form = document.getElementById('update-form');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+</script>
