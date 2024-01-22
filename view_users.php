@@ -135,6 +135,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
 </head>
 <body>
     <main>
+    <a href="admin_login.php">Takaisin pääsivulle</a>
 
     <h3 <?php if(isset($operationResult) === false) { echo "class='hidden'"; } ?> > 
     <?php if(isset($operationResult)) { echo $operationResult; } else { echo "hidden";} ?>

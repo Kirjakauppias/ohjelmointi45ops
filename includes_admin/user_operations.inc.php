@@ -17,7 +17,7 @@ function delete_user($pdo, $id){
 
         $stmt->execute();
             
-        return "User deleted successfully!";
+        return "Käyttäjä poistettu onnistuneesti!";
     }
     catch(PDOException $e){
         return "error: $e";
@@ -38,7 +38,7 @@ function restore_user($pdo, $id){
 
         $stmt->execute();
             
-        return "User restored successfully!";
+        return "Käyttäjä palautettu onnistuneesti!";
     }
     catch(PDOException $e){
         return "error: $e";

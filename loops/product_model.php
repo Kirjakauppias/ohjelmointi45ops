@@ -1,6 +1,7 @@
 <?php
 //Funktio, joka tulostaa käyttäjälle yhden tuotteen
 function printProduct($rivi) {
+    if(is_null($rivi["deleted_at"])){
     echo "<div class='product-container'>";
         echo "<h3>" . $rivi["ProductName"] . "</h3>"; //Tuotteen nimi
         echo "<a href='product_display.php?ProductID=" . $rivi["ProductID"] . "'><img src='product_images/" . $rivi["ImageURL"] . "'></a>"; //Tuotteen kuvasta klikataan 1 tuotteen sivulle
@@ -16,10 +17,12 @@ function printProduct($rivi) {
                 echo "</form>";
             echo "</div>";
     echo "</div>";
+    }
 }
 
 //Tämä funktio on product_display.php -sivulle
 function printOneProduct($product){
+    if(is_null($product["deleted_at"])){
     echo "<div class='product-display-main'>";                                                                  
                 echo "<div class='product-display-container'>";
                     echo "<div class='product-display-image'>";
@@ -38,6 +41,7 @@ function printOneProduct($product){
                 echo "</div>";
     echo "</div>";
     }
+}
 
 //Funktio joka tulostaa tuotteen $_GET['ProductID'] -perusteella
 function displayGetProduct($conn){
