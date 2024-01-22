@@ -12,3 +12,12 @@ function get_user(object $pdo, string $username) {
 
     return $result; 
 }
+
+function getUserInfo(object $pdo, int $userID) {
+    $query = "SELECT * FROM users WHERE UserID = :user_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id, $userId, PDO::PARAM_INT');
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
