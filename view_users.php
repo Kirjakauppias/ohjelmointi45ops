@@ -1,4 +1,7 @@
 <?php
+
+$debugMode = true;
+
 // sleep(1);
 // Tässä tiedostossa listataan kaikki käyttäjät taulukossa
 // Taulukossa on napit, joilla käyttäjä voidaan poistaa tai muokata
@@ -50,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 // $queryString = "SELECT * FROM users" // Voi olla myös erillinen muuttuja SQL lauseelle
-$stmt = $pdo_conn->prepare("SELECT UserID, Username, email, deleted_at FROM users");
+$stmt = $pdo_conn->prepare("SELECT UserID, Username, firstname, lastname, email, address, usertype, password, deleted_at FROM users");
 
 $stmt->execute(); // Suoritetaan SQL lause
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
@@ -149,7 +152,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
             <tr>
                 <th>ID</th>
                 <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
                 <th>Email</th>
+                <th>Address</th>
+                <th>Usertype</th>
+                <th>Password</th>
                 <th>Actions</th>
             </tr>
             <!-- Loopataan läpi $users array ja generoidaan rivejä taulukkoon -->
@@ -160,7 +168,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                 <!-- <td><?php // echo $user["UserID"]; ?></td>  -->
                 <td><?= $user["UserID"] ?></td><!-- td on rivin sarakkeita -->
                 <td><?= htmlspecialchars($user["Username"]) ?></td>
+                <td><?= htmlspecialchars($user["firstname"]) ?></td>
+                <td><?= htmlspecialchars($user["lastname"]) ?></td>
                 <td><?= htmlspecialchars($user["email"]) ?></td>
+                <td><?= htmlspecialchars($user["address"]) ?></td>
+                <td><?= htmlspecialchars($user["usertype"]) ?></td>
+                <td><?= $debugMode ? $user["password"] : '********'; ?></td>
                 <td> <!-- Actions sarake -->
                 
                 <?php if($user['deleted_at'] === null): ?>

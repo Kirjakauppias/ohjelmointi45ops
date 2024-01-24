@@ -12,5 +12,7 @@
 
 21.1.2024: memberArea.php           Muokattava näkymä oikeaksi. Tietokantaan tallennus puuttuu.
                                     <!--TIETOKANTAAN TALLENNUS OK-->
+                                    
+24.1.2024: order_page.php           Tilaus ei mene tietokantaan jos asiakas ei ole kirjautunut sisään.
 
 

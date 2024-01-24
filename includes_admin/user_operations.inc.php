@@ -66,10 +66,17 @@ function getUserDetails($pdo, $userId){
 function updateUserDetails($pdo, $userId, $newData){
     // Pitäisi vielä tarkistaa ennen muokkausta, että käyttäjällä on oikeus muokata
     // tätä asiaa
-    $stmt = $pdo->prepare("UPDATE users SET Username = :username, Email = :email WHERE UserID = :user_id");
+    $stmt = $pdo->prepare("UPDATE users SET Username = :username, FirstName = :firstname, LastName = :lastname, Email = :email, Address = :address, UserType = :usertype, Password = :password WHERE UserID = :user_id");
     $stmt->bindParam(':username', $newData['Username'], PDO::PARAM_STR);
+    $stmt->bindParam(':firstname', $newData['FirstName'], PDO::PARAM_STR);
+    $stmt->bindParam(':lastname', $newData['LastName'], PDO::PARAM_STR);
     $stmt->bindParam(':email', $newData['Email'], PDO::PARAM_STR);
+    $stmt->bindParam(':address', $newData['Address'], PDO::PARAM_STR);
+    $stmt->bindParam(':usertype', $newData['UserType'], PDO::PARAM_STR);
+    $hashedPassword = password_hash($newData['Password'], PASSWORD_DEFAULT);
+    $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
     $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+
 
     $stmt->execute();
 } // updateUserDetails

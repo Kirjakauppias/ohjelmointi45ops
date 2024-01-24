@@ -20,7 +20,13 @@
             // Tässä luodaan association array, jossa on uusi data key=>value muodossa
             $newData = [
                 'Username' => $_POST['Username'],
+                'FirstName' => $_POST['Firstname'],
+                'LastName' => $_POST['Lastname'],
                 'Email' => $_POST['Email'],
+                'Address' => $_POST['Address'],   
+                'UserType' => $_POST['Usertype'],
+                'Password' => $_POST['Password'],
+                 
             ];
 
             // Tietokannan päivitys funktio
@@ -63,6 +69,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="admin_login.php">Takaisin pääsivulle</a>
     <!-- Virheiden käsittely (userId puuttuu tai käyttäjän tiedon haku ei onnistu) -->
     <h2>Edit User</h2>
     <form action="edit_user.php" method="post">
@@ -72,8 +79,23 @@
         <label for="Username">Username:</label>
         <input type="text" name="Username" value="<?= htmlspecialchars($userDetails['Username']) ?>" required>
 
+        <label for="Firstname">Firstname:</label>
+        <input type="text" name="Firstname" value="<?= htmlspecialchars($userDetails['FirstName']) ?>" required>
+
+        <label for="Lastname">Lastname:</label>
+        <input type="text" name="Lastname" value="<?= htmlspecialchars($userDetails['LastName']) ?>" required>
+    <br><br>
         <label for="Email">Email:</label>
         <input type="email" name="Email" value="<?= htmlspecialchars($userDetails['Email']) ?>" required>
+
+        <label for="Address">Address:</label>
+        <input type="address" name="Address" value="<?= htmlspecialchars($userDetails['Address']) ?>" required>
+
+        <label for="Usertype">Usertype:</label>
+        <input type="usertype" name="Usertype" value="<?= htmlspecialchars($userDetails['UserType']) ?>" required>
+
+        <label for="Password">Password:</label>
+        <input type="password" name="Password" value="" required>
 
         <!-- Lopullinen datan validointi täytyy suorittaa palvelimella -->
         <!-- käyttäjä pystyy muokkaamaan koodia / dataa omalla selaimellaan / koneellaan -->
