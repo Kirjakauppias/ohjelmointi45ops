@@ -47,3 +47,5 @@ function signup_inputs() {
 
     unset($_SESSION["signup_data"]);
 }
+
+

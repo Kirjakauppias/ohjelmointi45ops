@@ -21,6 +21,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['admin_order_status'])) {
+
+        $orderStatus = [
+            'OrderID' => $_POST['orderid'],
+            'Status' => $_POST['status'],];
+
+            $sql = "UPDATE orders SET Status = :Status WHERE OrderID = :OrderID";
+
+            $stmt = $pdo_conn->prepare($sql);
+    
+            // Bind parameters
+            $stmt->bindParam(':OrderID', $orderStatus['OrderID']);
+            $stmt->bindParam(':Status', $orderStatus['Status']);
+
+        //Execute the query
+        if($stmt->execute()) {
+            echo "Tilauksen status muutettu onnistuneesti!<br>";
+        } else {
+            echo "Error: " . $stmt->errorInfo()[2];
+        }
+    }
+}
+
 // $queryString = "SELECT * FROM orders" // Voi olla myös erillinen muuttuja SQL lauseelle
 $stmt = $pdo_conn->prepare("SELECT OrderID, UserID, OrderDate, Status, TotalPrice, deleted_at FROM orders");
 
@@ -147,6 +171,13 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                 </tr>
             <?php endforeach; ?>
         </table>
+        <h3>Muokkaa tilauksen statusta</h3>
+
+        <form action="" method="post">
+                <input type="text" name="orderid" placeholder="Order ID"><br>
+                <input type="text" name="status" placeholder="Tilauksen status"><br>
+            <button name="admin_order_status">Lähetä</button>
+        </form>
     </main>
 </body>
 </html>

@@ -1,7 +1,5 @@
 <?php
 
-$debugMode = true;
-
 // sleep(1);
 // Tässä tiedostossa listataan kaikki käyttäjät taulukossa
 // Taulukossa on napit, joilla käyttäjä voidaan poistaa tai muokata
@@ -32,6 +30,8 @@ $debugMode = true;
 // Tietokanta yhteyden koodit löytyy tästä tiedostosta
 require_once 'includes_admin/db_connection.inc.php'; // <- $pdo_conn
 require_once 'includes_admin/user_operations.inc.php';
+require_once 'includes/signup_view.inc.php';
+
 
 // Käyttäjän "poisto"
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -52,8 +52,65 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_POST['admin_register'])){
+
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+
+        // Check if the username is not already in use
+        $checkUsernameSql = "SELECT COUNT(*) FROM users WHERE Username = :Username";
+        $checkUsernameStmt = $pdo_conn->prepare($checkUsernameSql);
+        $checkUsernameStmt->bindParam(':Username', $username);
+        $checkUsernameStmt->execute();
+        $usernameExists = $checkUsernameStmt->fetchColumn();
+
+        // Check if the email is not already in use
+        $checkEmailSql = "SELECT COUNT(*) FROM users WHERE Email = :Email";
+        $checkEmailStmt = $pdo_conn->prepare($checkEmailSql);
+        $checkEmailStmt->bindParam(':Email', $email);
+        $checkEmailStmt->execute();
+        $emailExists = $checkEmailStmt->fetchColumn();
+
+        if ($usernameExists > 0) {
+            echo "Error: Username is already in use.";
+        } elseif ($emailExists > 0) {
+            echo "Error: Email is already in use.";
+        } else {
+
+        $userData = [
+            'FirstName' => $_POST['firstname'],
+            'LastName' => $_POST['lastname'],
+            'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'Email' => $_POST['email'],
+            'Address' => $_POST['address'],
+            'UserType' => $_POST['usertype'],
+            'Username' => $_POST['username'],
+        ];
+
+         
+    $sql = "INSERT INTO users (FirstName, LastName, Password, Email, Address, UserType, Username) 
+    VALUES (:FirstName, :LastName, :Password, :Email, :Address, :UserType, :Username)";
+
+    $stmt = $pdo_conn->prepare($sql);
+
+        // Bind parameters
+        foreach ($userData as $key => $value) {
+        $stmt->bindParam(':' . $key, $userData[$key]);
+        }
+
+        // Execute the query
+        if ($stmt->execute()) {
+            echo "User registered successfully!";
+        } else {
+            echo "Error: " . $stmt->errorInfo()[2];
+        }
+    }
+    }
+}
+
 // $queryString = "SELECT * FROM users" // Voi olla myös erillinen muuttuja SQL lauseelle
-$stmt = $pdo_conn->prepare("SELECT UserID, Username, firstname, lastname, email, address, usertype, password, deleted_at FROM users");
+$stmt = $pdo_conn->prepare("SELECT UserID, Username, firstname, lastname, email, address, usertype, deleted_at FROM users");
 
 $stmt->execute(); // Suoritetaan SQL lause
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
@@ -157,7 +214,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                 <th>Email</th>
                 <th>Address</th>
                 <th>Usertype</th>
-                <th>Password</th>
                 <th>Actions</th>
             </tr>
             <!-- Loopataan läpi $users array ja generoidaan rivejä taulukkoon -->
@@ -173,7 +229,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                 <td><?= htmlspecialchars($user["email"]) ?></td>
                 <td><?= htmlspecialchars($user["address"]) ?></td>
                 <td><?= htmlspecialchars($user["usertype"]) ?></td>
-                <td><?= $debugMode ? $user["password"] : '********'; ?></td>
                 <td> <!-- Actions sarake -->
                 
                 <?php if($user['deleted_at'] === null): ?>
@@ -204,6 +259,22 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
             
             <?php endforeach; ?>
         </table>
+
+        <h3>Luo tunnukset</h3>
+
+            <form action="" method="post">
+                
+                    <input type="text" name="firstname" placeholder="Nimi"><br>
+                    <input type="text" name="lastname" placeholder="Sukunimi"><br>
+                    <input type="text" name="address" placeholder="Osoite"><br>
+                    <input type="text" name="email" placeholder="E-mail"><br>
+                    <input type="text" name="usertype" placeholder="Usertype"><br>
+                    <input type="text" name="username" placeholder="Käyttäjätunnus"><br>
+                    <input type="password" name="password" placeholder="Salasana"><br>
+                <button name="admin_register">Lähetä</button>
+            </form>
+
+            
     </main>
 </body>
 </html>

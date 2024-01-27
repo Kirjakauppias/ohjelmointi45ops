@@ -21,6 +21,7 @@ session_start();
         echo "<a href='view_users.php'>Käyttäjälistaus</a><br>"; 
         echo "<a href='view_products.php'>Tuotelistaus</a><br>";
         echo "<a href='view_orders.php'>Tilauslistaus</a><br>";
+        echo "<a href='view_order_items.php'>Tilatut tuotteet</a><br>";
     ?>
         <!-- Add a log-out button -->
                     <form action="includes/logout.inc.php" method="post">

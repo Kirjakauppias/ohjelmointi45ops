@@ -15,4 +15,6 @@
                                     
 24.1.2024: order_page.php           Tilaus ei mene tietokantaan jos asiakas ei ole kirjautunut sisään.
 
+25.1.2024: register.php             Kun käyttäjä luo tunnukset, tietokantaan ei tallennu UserType = Customer.
+
 

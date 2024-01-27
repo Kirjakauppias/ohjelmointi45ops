@@ -21,6 +21,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['admin_product'])) {
+
+        $productData = [
+            'ProductName' => $_POST['productname'],
+            'Description' => $_POST['description'],
+            'Price' => $_POST['price'],
+            'ImageURL' => $_POST['imageurl'],
+        ];
+
+        $sql = "INSERT INTO products (ProductName, Description, Price, ImageURL)
+        VALUES (:ProductName, :Description, :Price, :ImageURL)";
+
+        $stmt = $pdo_conn->prepare($sql);
+
+        //Bind parameters
+        foreach ($productData as $key => $value) {
+            $stmt->bindParam(':' . $key, $productData[$key]);
+        }
+
+        //Execute the query
+        if($stmt->execute()) {
+            echo "Tuote lisätty onnistuneesti!";
+        } else {
+            echo "Error: " . $stmt->errorInfo()[2];
+        }
+    }
+}
+
 // $queryString = "SELECT * FROM products" // Voi olla myös erillinen muuttuja SQL lauseelle
 $stmt = $pdo_conn->prepare("SELECT ProductID, ProductName, Description, Price, ImageURL, deleted_at FROM products");
 
@@ -148,6 +177,16 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                 </tr>
             <?php endforeach; ?>
         </table>
+
+        <h3>Luo tuote</h3>
+        <form action="" method="post">
+            <input type="text" name="productname" placeholder="Tuotteen nimi"><br>
+            <input type="text" name="description" placeholder="Tuotteen kuvaus"><br>
+            <input type="text" name="price" placeholder="Tuotteen hinta"><br>
+            <input type="text" name="imageurl" placeholder="kuvan osoite"><br>
+
+            <button name="admin_product">Lähetä</button>
+        </form>
     </main>
 </body>
 </html>
