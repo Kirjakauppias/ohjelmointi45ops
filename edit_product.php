@@ -4,6 +4,7 @@ session_start();
 
 require_once 'includes/db_connection.inc.php';
 require_once 'includes_admin/product_operations.inc.php'; // Update with the correct file name
+if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) && $_SESSION['user_type'] === 'Admin') {
 
     // Check if the form is submitted
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -73,5 +74,11 @@ require_once 'includes_admin/product_operations.inc.php'; // Update with the cor
         <!-- For example, they can remove the required attribute or change an email input to a text input -->
         <input type="submit" name="submit" value="Update">
     </form>
+<?php
+}
+    else {
+    Echo "Sinulla ei ole admin-oikeuksia!";
+}
+?>
 </body>
 </html>

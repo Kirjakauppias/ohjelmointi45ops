@@ -20,10 +20,11 @@ function check_signup_errors() {
     }
 }
 
+
 function signup_inputs() {
     if (isset($_SESSION["signup_data"]["username"]) &&
         isset($_SESSION["errors_signup"]["username_taken"]) === false) {
-            echo '<input type="text" name="username" placeholder="Käyttäjätunnus">
+            echo '<input type="text" name="username" placeholder="Käyttäjätunnus"
              value="'.htmlspecialchars($_SESSION["signup_data"]["username"]).'">';
     } else {
         echo '<input type="text" name="username" placeholder="Käyttäjätunnus">';

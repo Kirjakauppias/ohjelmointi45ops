@@ -10,6 +10,8 @@
     require_once 'includes/db_connection.inc.php';
     require_once 'includes_admin/user_operations.inc.php';
 
+    if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) && $_SESSION['user_type'] === 'Admin') {
+
     // Suoritetaan päivitys, jos saavutaan sivulle POST metodilla ja sitten uudelleen ohjataan etusivulle
     // Huom. jos päivitys epäonnistuu, käyttäjän pitää navigoida edit sivulle uudestaan ja antaa tiedot uudelleen
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -102,6 +104,11 @@
         <!-- esimerkiksi voi poistaa required attribuutin tai email inputin => text inputtiin -->
         <input type="submit" name="submit" value="Update">
     </form>
-
+    <?php
+}
+    else {
+    Echo "Sinulla ei ole admin-oikeuksia!";
+}
+?>
 </body>
 </html>
