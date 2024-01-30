@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // sleep(1);
 // Tässä tiedostossa listataan kaikki käyttäjät taulukossa
 // Taulukossa on napit, joilla käyttäjä voidaan poistaa tai muokata
@@ -28,84 +28,84 @@
 
 
 // Tietokanta yhteyden koodit löytyy tästä tiedostosta
-require_once 'includes_admin/db_connection.inc.php'; // <- $pdo_conn
+require_once 'includes/db_connection.inc.php'; // <- $pdo_conn
 require_once 'includes_admin/user_operations.inc.php';
 require_once 'includes/signup_view.inc.php';
 
+if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) && $_SESSION['user_type'] === 'Admin'){
 
-// Käyttäjän "poisto"
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['delete'])){
-        // delete nappia on painettu
-        $userIdToDelete = $_POST["user_id"];
-        $operationResult = delete_user($pdo_conn, $userIdToDelete);
+    // Käyttäjän "poisto"
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['delete'])){
+            // delete nappia on painettu
+            $userIdToDelete = $_POST["user_id"];
+            $operationResult = delete_user($pdo_conn, $userIdToDelete);
+        }
     }
-}
 
-
-// Käyttäjän "palautus"
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['restore'])){
-        // restore nappia on painettu
-        $userIdToRestore = $_POST["user_id"];
-        $operationResult = restore_user($pdo_conn, $userIdToRestore);
+    // Käyttäjän "palautus"
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['restore'])){
+            // restore nappia on painettu
+            $userIdToRestore = $_POST["user_id"];
+            $operationResult = restore_user($pdo_conn, $userIdToRestore);
+        }
     }
-}
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['admin_register'])){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['admin_register'])){
 
-        $username = $_POST['username'];
-        $email = $_POST['email'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
 
-        // Check if the username is not already in use
-        $checkUsernameSql = "SELECT COUNT(*) FROM users WHERE Username = :Username";
-        $checkUsernameStmt = $pdo_conn->prepare($checkUsernameSql);
-        $checkUsernameStmt->bindParam(':Username', $username);
-        $checkUsernameStmt->execute();
-        $usernameExists = $checkUsernameStmt->fetchColumn();
+            // Check if the username is not already in use
+            $checkUsernameSql = "SELECT COUNT(*) FROM users WHERE Username = :Username";
+            $checkUsernameStmt = $pdo_conn->prepare($checkUsernameSql);
+            $checkUsernameStmt->bindParam(':Username', $username);
+            $checkUsernameStmt->execute();
+            $usernameExists = $checkUsernameStmt->fetchColumn();
 
-        // Check if the email is not already in use
-        $checkEmailSql = "SELECT COUNT(*) FROM users WHERE Email = :Email";
-        $checkEmailStmt = $pdo_conn->prepare($checkEmailSql);
-        $checkEmailStmt->bindParam(':Email', $email);
-        $checkEmailStmt->execute();
-        $emailExists = $checkEmailStmt->fetchColumn();
+            // Check if the email is not already in use
+            $checkEmailSql = "SELECT COUNT(*) FROM users WHERE Email = :Email";
+            $checkEmailStmt = $pdo_conn->prepare($checkEmailSql);
+            $checkEmailStmt->bindParam(':Email', $email);
+            $checkEmailStmt->execute();
+            $emailExists = $checkEmailStmt->fetchColumn();
 
-        if ($usernameExists > 0) {
-            echo "Error: Username is already in use.";
-        } elseif ($emailExists > 0) {
-            echo "Error: Email is already in use.";
-        } else {
+            if ($usernameExists > 0) {
+                echo "Error: Username is already in use.";
+            } elseif ($emailExists > 0) {
+                echo "Error: Email is already in use.";
+            } else {
 
-        $userData = [
-            'FirstName' => $_POST['firstname'],
-            'LastName' => $_POST['lastname'],
-            'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'Email' => $_POST['email'],
-            'Address' => $_POST['address'],
-            'UserType' => $_POST['usertype'],
-            'Username' => $_POST['username'],
-        ];
+            $userData = [
+                'FirstName' => $_POST['firstname'],
+                'LastName' => $_POST['lastname'],
+                'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                'Email' => $_POST['email'],
+                'Address' => $_POST['address'],
+                'UserType' => $_POST['usertype'],
+                'Username' => $_POST['username'],
+            ];
 
          
-    $sql = "INSERT INTO users (FirstName, LastName, Password, Email, Address, UserType, Username) 
-    VALUES (:FirstName, :LastName, :Password, :Email, :Address, :UserType, :Username)";
+        $sql = "INSERT INTO users (FirstName, LastName, Password, Email, Address, UserType, Username) 
+        VALUES (:FirstName, :LastName, :Password, :Email, :Address, :UserType, :Username)";
 
-    $stmt = $pdo_conn->prepare($sql);
+        $stmt = $pdo_conn->prepare($sql);
 
-        // Bind parameters
-        foreach ($userData as $key => $value) {
-        $stmt->bindParam(':' . $key, $userData[$key]);
+            // Bind parameters
+            foreach ($userData as $key => $value) {
+            $stmt->bindParam(':' . $key, $userData[$key]);
+            }
+
+            // Execute the query
+            if ($stmt->execute()) {
+                echo "User registered successfully!";
+            } else {
+                echo "Error: " . $stmt->errorInfo()[2];
+            }
         }
-
-        // Execute the query
-        if ($stmt->execute()) {
-            echo "User registered successfully!";
-        } else {
-            echo "Error: " . $stmt->errorInfo()[2];
-        }
-    }
     }
 }
 
@@ -276,5 +276,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
 
             
     </main>
+<?php
+}
+else {
+    Echo "Sinulla ei ole admin-oikeuksia!";
+}
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+?>
 </body>
 </html>

@@ -35,33 +35,21 @@ session_set_cookie_params([
 session_start();
 $interval = 60 * 30; // 60 sekunttia * 30 minuuttia = sekunttien määrä, jolloin päivitetään id
 
-// Jos käyttäjä on kirjautunut, lisätään käyttäjän id uudestaan
-if (isset($_SESSION["user_id"])) {
-    if (!isset($_SESSION["last_generation"])) {
+// Jos käyttäjä on kirjautunut, lisätään käyttäjän id uudestaan.
+if(isset($_SESSION["user_id"])) {
+    if(!isset($_SESSION["last_generation"])) {
         session_regenerate_id_loggedin();
         $_SESSION["last_generation"] = time();
     } else {
-        if (time() - $_SESSION["last_generation"] >= $interval) {
+        if(time() - $_SESSION["last_generation"] >= $interval) {
             session_regenerate_id_loggedin();
             $_SESSION["last_generation"] = time();
-        }
-    }
-// Käyttäjä ei ole kirjautunut, normaali id generointi
-} else {
-    // Jos "last_generation" arvoa ei vielä ole, generoidaan id ja luodaan
-    // ["last_generation"] arvo.
-    if (!isset($_SESSION["last_generation"])) {
-        regenerate_session_id();
-    } else { // "last_generation" on jo olemassa
-        // Tarkistetaan onko sessio yli 30 minuuttia vanha
-        if (time() - $_SESSION["last_generation"] >= $interval) {
-            regenerate_session_id();
         }
     }
 }
 
 // Käytetään tätä if else sisällä, ei toisteta koodia
-function regenerate_session_id()
+function regenerate_session_id() 
 {
     session_regenerate_id(true);
     $_SESSION["last_generation"] = time();
@@ -70,7 +58,6 @@ function regenerate_session_id()
 function session_regenerate_id_loggedin()
 {
     session_regenerate_id(true);
-
     $newSessionId = session_create_id();
     // Lisätään kirjautuneen käyttäjän id tietokannasta, joka on sessiossa tallessa
     $sessionID = $newSessionId . "_" . $_SESSION["user_id"];
@@ -79,4 +66,9 @@ function session_regenerate_id_loggedin()
     $_SESSION["last_generation"] = time();
 }
 
-// Include tiedostoissa ei yleensä käytetä php:n lopetus tagiä
+/* Testauskoodia.
+echo "<pre>";
+var_dump($_POST);
+echo "<br></br>";
+var_dump($_SESSION);
+echo "</pre>";*/

@@ -1,8 +1,10 @@
 <?php
+session_start();
 // Tietokanta yhteyden koodit löytyy tästä tiedostosta
-require_once 'includes_admin/db_connection.inc.php'; // <- $pdo_conn
+require_once 'includes/db_connection.inc.php'; // <- $pdo_conn
 require_once 'includes_admin/product_operations.inc.php';
 
+if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) && $_SESSION['user_type'] === 'Admin') {
 // Tuotteen "poisto"
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete'])) {
@@ -188,5 +190,11 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
             <button name="admin_product">Lähetä</button>
         </form>
     </main>
+    <?php
+}
+else {
+    Echo "Sinulla ei ole admin-oikeuksia!";
+}
+?>
 </body>
 </html>

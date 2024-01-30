@@ -1,14 +1,17 @@
 <?php
-//ETUSIVU
-require_once 'includes_other/dbenquiry.php';                                                 
-include 'includes_other/dbsearchbar.php';        //Hakupalkin koodi on täällä.
-include 'includeFunctions.php';
-includeUpperElements();                                                                
-include 'loops/prCounter.loop.php';      //Tuotteiden esityskoodi on täällä.
-includeBottomElements();
+//PROJEKTIN ETUSIVU.
+include 'functions_partials.php';   // Tiedosto jossa on partials -tiedostot funktioina.
+require_once 'includes/db_enquiry.inc.php';
+
+includeUpperElements();             // HTML rakennefunktio.
+
+include 'loops/prCounter.loop.php'; // Tuotteiden esityskoodia.
+
+includeBottomElements();            // HTML -rakennefunktio.  
 
 
+/*Session testauskoodi.
 echo "<pre>";
 var_dump($_SESSION);
-echo "</pre>";
+echo "</pre>";*/
 ?>

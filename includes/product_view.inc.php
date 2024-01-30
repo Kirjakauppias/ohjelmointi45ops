@@ -1,5 +1,6 @@
 <?php
-//Funktio, joka tulostaa käyttäjälle yhden tuotteen
+// Funktio, joka tulostaa käyttäjälle yhden tuotteen.
+require_once 'product_model.inc.php';
 function printProduct($rivi) {
     if(is_null($rivi["deleted_at"])){
     echo "<div class='product-container'>";
@@ -20,35 +21,11 @@ function printProduct($rivi) {
     }
 }
 
-//Tämä funktio on product_display.php -sivulle
-function printOneProduct($product){
-    if(is_null($product["deleted_at"])){
-    echo "<div class='product-display-main'>";                                                                  
-                echo "<div class='product-display-container'>";
-                    echo "<div class='product-display-image'>";
-                        echo "<img src=product_images/". $product["ImageURL"] .">";
-                    echo "</div>";
-                    echo "<div class='product-display-detail'>";
-                        echo "<h2>" . $product["ProductName"] . "</h2>";
-                        echo "<p>" . $product["Description"] . "</p>";
-                        echo "<p>Hinta: €" . $product["Price"] . "</p>";
-                        echo "<br><br>";
-                        echo "<form action='shopping_cart.php' method='post'>";
-                            echo "<input type='hidden' name='product_id' value='$product[ProductID]'>";
-                            echo "<button type='submit'>Lisää ostoskoriin</button>";
-                    echo "</form>";
-                    echo "</div>";
-                echo "</div>";
-    echo "</div>";
-    }
-}
-
-//Funktio joka tulostaa tuotteen $_GET['ProductID'] -perusteella
-function displayGetProduct($conn){
+function displayGetProduct($pdo_conn){
     // Tarkistetaan, onko ProductID asetettu URL-parametreihin
     if (isset($_GET['ProductID'])){
         $productID = $_GET['ProductID'];    //Haetaan URL:stä oleva ProductID muuttujaan
-        $product = getProductByID($conn, $productID);
+        $product = getProductByID($pdo_conn, $productID);
 
             // Tarkistetaan, että $product on taulukko ja että sillä on odotetut indeksit ennen tulostusta
             if (is_array($product) && isset($product['ProductName'])) {
@@ -61,15 +38,26 @@ function displayGetProduct($conn){
     }
 }
 
-//Funktio joka luo tuotteen ostoskoriin
-function createCartItem($productInfo) {
-    return [
-        "productID" => $productInfo["ProductID"],
-        "productName" => $productInfo["ProductName"],
-        "price" => $productInfo["Price"],
-        "quantity" => 1, //Oletuksena 1
-        //"userID" => $loggedInUserID,
-    ];
+function printOneProduct($product){
+    if(is_null($product["deleted_at"])){
+    echo "<div class='product-display-main'>";                                                                  
+                echo "<div class='product-display-container'>";
+                    echo "<div class='product-display-image'>";
+                        echo "<img src=product_images/". $product["ImageURL"] .">";
+                    echo "</div>";
+                    echo "<div class='product-display-detail'>";
+                        echo "<h2>" . $product["ProductName"] . "</h2>";
+                        echo "<p>" . $product["Description"] . "</p>";
+                        echo "<p>Hinta: €" . $product["Price"] . "</p>";
+                        echo "<br><br>";
+                        echo "<form action='shopping_cart.php' method='post' class='product-button'>";
+                            echo "<input type='hidden' name='product_id' value='$product[ProductID]'>";
+                            echo "<button type='submit'>Lisää ostoskoriin</button>";
+                    echo "</form>";
+                    echo "</div>";
+                echo "</div>";
+    echo "</div>";
+    }
 }
 
 function printSearchedProducts($products) {

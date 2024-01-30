@@ -1,10 +1,10 @@
 <?php
 //TÄMÄ SIVU NÄYTTÄÄ 6 TUOTETTA SATUNNAISESSA JÄRJESTYKESSSÄ
-require_once 'product_model.php';
-require_once 'includes_other/dbenquiry.php';
+require_once 'includes/product_model.inc.php';
+require_once 'includes/product_view.inc.php';
 
 $laskuri = 0;
-$randomProducts = getRandomProducts($conn); //Tietokantahaku-funktio
+$randomProducts = getRandomProducts($pdo_conn); //Tietokantahaku-funktio
 
 foreach ($randomProducts as $rivi) {
     if ($laskuri >= 6) {

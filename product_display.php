@@ -1,12 +1,12 @@
 <?php
-//TÄMÄ SIVU TULOSTAA SEN TUOTTEEN, JONKA KÄYTTÄJÄ ON VALINNUT
-include 'includeFunctions.php';
-require_once 'includes_other/dbconn.php';
-require_once 'includes_other/dbenquiry.php';
-require_once 'loops/product_model.php';
-include_once 'includes_other/dbsearchbar.php';
+// TÄMÄ TIEDOSTO NÄYTTÄÄ YHDEN VALITUN TUOTTEEN TIEDOT
+require_once 'includes/db_connection.inc.php';
+require_once 'includes/db_enquiry.inc.php';
+require_once 'includes/product_view.inc.php';
+include 'functions_partials.php';
 
 includeUpperElements();
-    displayGetProduct($conn);
+    displayGetProduct($pdo_conn);
 includeBottomElements();
+
 ?>

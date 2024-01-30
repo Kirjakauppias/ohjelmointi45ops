@@ -1,5 +1,6 @@
- <!--NAVIGOINTI-->
- <nav>
+<!--TÄSSÄ TIEDOSTOSSA ON NAVIGOINNIN RAKENNEKOODIT-->
+<!--NAVIGOINTI-->
+<nav>
         <div class="frontpage-link">
             <a href="index.php">ETUSIVU</a>
         </div>

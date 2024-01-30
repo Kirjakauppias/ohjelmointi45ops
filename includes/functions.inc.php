@@ -1,18 +1,5 @@
 <?php
-function includeUpperElements(){
-    include 'partials/doc.php';                      //HTML -sivun alkukoodi on täällä.
-    include 'partials/header.php';                   //Otsikko -tason koodi on täällä.
-    include 'partials/nav.php';                      //Navigointi -koodi on täällä.
-    echo "<main>";
-}
-function includeBottomElements(){
-    echo "</main>";
-    include 'partials/footer.php';
-    include 'scripts/navScript.php';
-    include 'partials/htmlEnd.php';
-}
-
-function createUpdateForm() {
+function createUpdateForm($userDetails) {
     echo "
         <form method='post' action='' class='form-container'>
             <label for='firstname'>Etunimi:</label>
@@ -32,11 +19,10 @@ function createUpdateForm() {
         </form>
     ";
 }
-
-function printUserDetails() {
-    echo "Käyttäjätunnus: " . $_SESSION['username'] . "<br>";
-    echo "Email: " . $_SESSION['email'] . "<br>";
-    echo "Etunimi: " . $_SESSION['firstname'] . "<br>";
-    echo "Sukunimi: " . $_SESSION['lastname'] . "<br>";
-    echo "Osoite: " . $_SESSION['address'] . "<br>";
+function printUserDetails($userDetails) {
+    echo "<p>Käyttäjätunnus:<b> " . $userDetails['Username'] . "</b></p><br>";
+    echo "<p>Etunimi:<b> " . $userDetails['FirstName'] . "</b></p><br>";
+    echo "<p>Sukunimi:<b> " . $userDetails['LastName'] . "</b></p><br>";
+    echo "<p>Osoite:<b> " . $userDetails['Address'] . "</b></p><br>";
+    echo "<p>E-mail:<b> " . $userDetails['Email'] . "</b></p><br>";
 }

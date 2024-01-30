@@ -1,8 +1,10 @@
 <?php
+session_start();
 // Tietokanta yhteyden koodit löytyy tästä tiedostosta
-require_once 'includes_admin/db_connection.inc.php'; // <- $pdo_conn
+require_once 'includes/db_connection.inc.php'; // <- $pdo_conn
 require_once 'includes_admin/order_operations.inc.php';
 
+if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) && $_SESSION['user_type'] === 'Admin'){
 // Fetch orderitems data
 $stmtOrderItems = $pdo_conn->prepare("SELECT OrderItemID, OrderID, ProductID, Quantity, Subtotal FROM orderitems");
 $stmtOrderItems->execute();
@@ -104,5 +106,11 @@ $orderItems = $stmtOrderItems->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
 </table>
 </main>
+<?php
+}
+else {
+    Echo "Sinulla ei ole admin-oikeuksia!";
+}
+?>
 </body>
 </html>

@@ -1,77 +1,59 @@
 <?php
-    session_start();
-    //Nämä kutsut ovat sisäänkirjautmista varten
-     require_once 'includes/signup_view.inc.php';
-     require_once 'includes/login_view.inc.php';
-     
+//TÄMÄ TIEDOSTO ON PROJEKTIN OTSIKKO-TASOA VARTEN.
+//session_start();
+require_once 'includes/config_session.inc.php';
+require_once 'includes/login_view.inc.php';
 ?>
-
 <header>
+    <div class="bmc-wrap">
         <!--BANNERI & SEARCH-->
-        <div class="banner-search-container">
+        <div class="banner-searchbar-container">
             <!--BANNERI-->
-            <div class="banner">
-                <a href="index.php" alt="Etusivu">
-                    <img src="images/banner_small.png">
-                </a>
-            </div>
-        
-            <!--SEARCHBAR-->
-            <div class="search-container">
-                <!--
-                <form action="index.php" method="get"> -->
-                <form method="get">
-                    <input type="text" name="search" placeholder="Etsi tuotteita">
-                    <button type="submit">
-                        Etsi
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <!--MENU & KIRJAUTUMINEN & OSTOSKORI-->
-        <div class="menu-log-cart-container">
-            <div class="menu">
-                <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
-            </div>
+            <a href="index.php" alt="Etusivu"><img src="images/banner_small.png"></a>
             
-            <div class="cart">
-                <a href="shopping_cart.php"><img src="images/carttext.png"></a>
-            </div>
-
-            <div class="login-container">
-                <?php
-                //output_username();
-                if (!isset($_SESSION["from_login_page"])) {
-                    ?>
-
-                        <form action="includes/login.inc.php" method="post">
-                            <input type="text" name="username" placeholder="Käyttäjätunnus"><br>
-                            <input type="password" name="password" placeholder="Salasana"><br>
-                            <button>Kirjaudu</button>
-                        </form>
-                <?php 
-
-                check_login_errors();
-                } else { 
-                    if (isset($_SESSION["from_login_page"]) && isset($_SESSION['user_username']) ){
-                    // Käyttäjä on kirjautunut sisään, voit näyttää kirjautuneen käyttäjän tiedot tai tehdä muita toimintoja
-                    $username = $_SESSION["username"];
-                    echo "Tervetuloa, " . $username . "!"; ?>
-
-                    <!-- Add a log-out button -->
-                    <form action="includes/logout.inc.php" method="post">
-                        <button type="submit" name="logout">Kirjaudu ulos</button>
-                    </form>
-                    <?php
-                    }
-                            
-                }
-                ?>
-
-            </div>
+            <!--SEARCHBAR-->
+            <!--Luodaan search-bar lomake-->
+            <form method="get" class="searchbar-form">
+                <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" placeholder="Etsi tuotteita">
+                <button type="submit">Etsi</button>
+            </form>
         </div>
 
 
-        
+        <!--MENU & OSTOSKORI-->
+        <div class="menu-cart-container">
+            <!--MENU-->    
+            <img src="images/menutext.png" class="log"> <!--Luotu luokka "log" javascriptia varten-->
+            <!--OSTOSKORI-->
+            <a href="shopping_cart.php"><img src="images/carttext.png" class="cart-image"></a>
+        </div>
+    </div>
+
+    <!--LOGIN-->
+    <div class="login-container">
+        <?php
+        //Varmistetaan että käyttäjä on kirjautunut sisään.
+        if (!isset($_SESSION["from_login_page"]) && !isset($_SESSION['user_username'])) {
+            ?>
+            <form action="includes/login.inc.php" method="post" class="login-form">
+                    <input type="text" name="username" placeholder="Käyttäjätunnus"><br>
+                    <input type="password" name="password" placeholder="Salasana"><br>
+                    <div class="button-errors-wrap">
+                        <button>Kirjaudu</button>
+                        <div class="error-message-wrap">
+                            <?php check_login_errors(); ?>
+                        </div>
+                    </div>
+                </form>
+            <?php    
+        } else { 
+            // Käyttäjä on kirjautunut sisään, voit näyttää kirjautuneen käyttäjän tiedot tai tehdä muita toimintoja
+            echo "<h3>Tervetuloa, " . $_SESSION['user_username'] . "!</h3>";?>
+
+            <!-- Add a log-out button -->
+            <form action="includes/logout.inc.php" method="post" class="logout-form">
+                <button type="submit" name="logout">Kirjaudu ulos</button>
+            </form> <?php
+        }?>
+    </div>
 </header>

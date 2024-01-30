@@ -1,8 +1,7 @@
 <?php
 //ETUSIVU
-require_once 'includes_other/dbenquiry.php';                                                 
-include 'includes_other/dbsearchbar.php';        //Hakupalkin koodi on täällä.
-include 'includeFunctions.php';
+require_once 'includes/db_enquiry.inc.php';                                                 
+include 'functions_partials.php';
 includeUpperElements();                       
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finalize_order'])) {
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finalize_order'])) {
     
     // Esimerkki: Tulosta ostoskorin tiedot
     echo "<h2>Ostoskorin tiedot:</h2>";
-    echo "<table border='1'>";
+    echo "<table class='cart-table'>";
     echo "<tr>
             <th>Tuotteen nimi</th>
             <th>Hinta</th>

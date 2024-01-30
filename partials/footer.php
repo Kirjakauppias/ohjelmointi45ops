@@ -1,4 +1,4 @@
-<!--FOOTER -OSIO-->
+<!--TÄSSÄ TIEDOSTOSSA ON FOOTERIN RAKENNEKOODI-->
 <footer>
         <div class="footer-header-body-container">
             <div class="footer-osoitetiedot">

@@ -1,11 +1,15 @@
 <?php
-    //SIVU JOSSA ESITETÄÄN KAIKKI TUOTTEET
-    include 'includeFunctions.php';
-    require 'includes_other/dbconn.php';
-    require 'includes_other/dbenquiry.php';
-    include 'includes_other/dbsearchbar.php';
+include 'functions_partials.php';   // Tiedosto jossa on partials -tiedostot funktioina.
+require_once 'includes/db_enquiry.inc.php';
 
-includeUpperElements();                                                         
-    include 'loops/all_products.loop.php'; //Looppi jossa esitetään kaikki tuotteet.
-includeBottomElements();
+includeUpperElements();             // HTML rakennefunktio.
+
+include 'loops/all_products.loop.php';
+
+includeBottomElements();            // HTML -rakennefunktio. 
+
+/*Session testauskoodi.
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";*/ 
 ?>

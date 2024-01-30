@@ -2,7 +2,7 @@
 session_start();
 
 
-require_once 'includes_admin/db_connection.inc.php';
+require_once 'includes/db_connection.inc.php';
 require_once 'includes_admin/product_operations.inc.php'; // Update with the correct file name
 
     // Check if the form is submitted

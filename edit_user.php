@@ -7,7 +7,7 @@
     // Lopuksi käyttäjä voi napsauttaa "Update"-nappia, joka suorittaa
     // tietokannan päivittämisen uusilla tiedoilla.
 
-    require_once 'includes_admin/db_connection.inc.php';
+    require_once 'includes/db_connection.inc.php';
     require_once 'includes_admin/user_operations.inc.php';
 
     // Suoritetaan päivitys, jos saavutaan sivulle POST metodilla ja sitten uudelleen ohjataan etusivulle

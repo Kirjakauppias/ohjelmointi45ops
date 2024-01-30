@@ -19,16 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors = []; // Talennetaan virheet key -> value pareina
 
         if (is_input_empty($username, $password, $email)) {
-            $errors["empty_input"] = "Fill in all fields!";
+            $errors["empty_input"] = "Täytä kaikki tiedot!";
         }
         if (is_email_invalid($email)) {
-            $errors["invalid_email"] = "Invalid email used!";
+            $errors["invalid_email"] = "Sähköposti on väärässä muodossa!";
         }
         if (is_username_taken($pdo_conn, $username)) {
-            $errors["username_taken"] = "Username already taken!";
+            $errors["username_taken"] = "Käyttäjätunnus on jo käytössä!";
         }
         if (is_email_registered($pdo_conn, $email)) {
-            $errors["email_used"] = "Email already registered!";
+            $errors["email_used"] = "Sähköposti on jo rekisteröity!";
         }
 
         // Tarvitaan seession aloitus, ennen kuin virheet voidaan tallentaa
