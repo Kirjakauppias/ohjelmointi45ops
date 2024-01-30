@@ -43,7 +43,7 @@ main {
 
 /*HEADER*/
 header {
-    width: 55%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
+    width: 58%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
     height: 12rem;
     display: flex;
     align-items: center;
@@ -90,6 +90,23 @@ header {
 }
 
 .searchbar-form button:hover {
+    background-color: #45a049;
+}
+
+.new-customer button {
+    width: 45%;
+    padding: 6px;
+    background-color: #000a01;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.new-customer button:hover {
     background-color: #45a049;
 }
 
@@ -334,7 +351,7 @@ nav a {
 }
 
 .product-button button{
-    width: 40%;
+    width: 30%;
     padding: 6px;
     background-color: #000a01;
     color: #fff;

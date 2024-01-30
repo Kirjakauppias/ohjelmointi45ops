@@ -17,6 +17,9 @@ require_once 'includes/login_view.inc.php';
                 <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" placeholder="Etsi tuotteita">
                 <button type="submit">Etsi</button>
             </form>
+            <form action="register.php" class="new-customer">
+                <button>Uusi asiakas?</button>
+            </form>
         </div>
 
 

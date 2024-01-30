@@ -2,3 +2,6 @@
 29.1.24: footer.php              Footer -osion muotoilu uusiksi.
 29.1.24: Admin -sivut            Admin sivujen muotoilu uusiksi.
 30.1.24: order_page.php          Muotoilu uusiksi.
+30.1.24: order_page.php          Entä jos ei ole rekisteröitynyt, minne asiakkaan tiedot?
+30.1.24: header.php              Otsikkoon lisätty "Uusi asiakas?" -nappi <= SUORITETTU
+30.1.24: shopping_cart.php       Lisää nappula "jatka ostoksia".
