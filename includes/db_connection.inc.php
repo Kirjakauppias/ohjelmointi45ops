@@ -4,8 +4,8 @@
 
 $host = "localhost";      //Tietokantapalvelimen osoite. "localhost" -> tietokantapalvelin on samassa koneessa kuin web-palvelin.
 $dbname = "verkkokauppa"; //Tietokannan nimi.
-$dbusername ="Leppari";      //Käyttäjätunnus -> TÄMÄ MUUTETTAVA, TIETOTURVA-RISKI.
-$dbpassword = "Lepinkainen79";         //Tietokannan salasana ->  TÄMÄ MUUTETTAVA, TIETOTURVA-RISKI.
+$dbusername ="root";      //Käyttäjätunnus -> TÄMÄ MUUTETTAVA, TIETOTURVA-RISKI.
+$dbpassword = "";         //Tietokannan salasana ->  TÄMÄ MUUTETTAVA, TIETOTURVA-RISKI.
 
 try {
     //Uusi PDO-yhteysolio.

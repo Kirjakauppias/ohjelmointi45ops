@@ -123,6 +123,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Users</title>
+    <link rel="stylesheet" href="./styles/style.css">
     <style>
         table {
             border-collapse: collapse;
@@ -202,7 +203,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
   </h3>
         
         <h2>User List (vain admin käyttäjät)</h2>
-        
+        <div class="view-users-container">
         <!-- Tähän taulukkoon generoidaan rivejä $users muuttujan datan perusteella -->
         <table>
             <!-- Otsikko rivi -->
@@ -260,9 +261,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
             <?php endforeach; ?>
         </table>
 
-        <h3>Luo tunnukset</h3>
-
-            <form action="" method="post">
+        
+        <form action="" method="post" class="insert-user-form">
+                <h3>Luo tunnukset</h3>
                 
                     <input type="text" name="firstname" placeholder="Nimi"><br>
                     <input type="text" name="lastname" placeholder="Sukunimi"><br>
@@ -273,7 +274,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // Tallennetaan data muuttujaan
                     <input type="password" name="password" placeholder="Salasana"><br>
                 <button name="admin_register">Lähetä</button>
             </form>
-
+                </div>
             
     </main>
 <?php
