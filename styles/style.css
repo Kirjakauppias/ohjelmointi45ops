@@ -1,9 +1,57 @@
+/*Resoluutio 1300x945*/
+
+@media screen and (max-width: 1300px) and (max-height: 945px) {
+    .header-wrapper{
+        width: 100%;
+    }
+
+    .login-container {
+        display: none;
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
     min-height: 100vh; /*100 on käyttäjän näytön korkeus*/
-    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    width: 100%;                         
+    height: auto;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    justify-content: center;
+}
+
+nav {
+    width: 58%;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: none;           
+}
+
+main {
+    width: 80%;
+    flex: 1;
+    margin: 0 auto;
+    margin-top: 3rem;
+    display: inherit;
+    flex-wrap: wrap;                    
+    justify-content: center; 
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    height: 12rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    
 }
 
 a {
@@ -21,129 +69,142 @@ h2 {
 h3 {
     font-family: Arial, Helvetica, sans-serif;
 }
-p {
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 ol {
     list-style-type: none;
     padding-inline-start: 5px;
 }
-
-
-main {
-    width: 55%;
-    flex: 1;
-    margin: 0 auto;
-    margin-top: 3rem;
-    display: inherit;
-    flex-wrap: wrap;                    /*Tällä saa tuotteita x määrä riviin*/
-    justify-content: center; 
-}
-
 /*HEADER*/
-header {
-    width: 58%;                         /*HOX! Parempi käyttää staattista leveyttä (pxl/rem)?*/
-    height: 12rem;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;                     /*Tämä keskittää headerin*/
-    border-bottom: 1px solid black;
-    justify-content: space-between;
+
+.header-wrapper {                       /*Ohjailee otsikko -tason divejä*/
+    width: 50%;
+    display: block;
 }
 
-.banner-searchbar-container img{
-    height: 100px;
-    width: 330px;
+.banner-searchbar-container {           /*Sisältää banner & searchbar*/
+    display: block;
+    width: 100%;
+    justify-content: center;
 }
 
-.bmc-wrap {
-    display: inherit;
-}
+    .banner {                               /*Sisältää sivujen banner imagen*/
+        width: auto;
+    }
 
-.searchbar-form {
-    margin-left: 20px;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
+    .banner img {
+        height: 100px;
+        width: 330px;
+    }
 
-}
+    .banner-icons {
+        display: flex;
+        width: 100%;
+    }
+    
+    .menu-cart-login-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .menu-cart-container {              /*Sisältää valikko- ja ostoskori ikonit*/
+        display: inherit;
+        align-items: center;
+    }
+    
+    .log {                                  /*Valikko-kuva*/
+        width: 125px; 
+        height: 90px;
+        padding-top: 5px;
+    }
+    
+    .cart-image {                           /*Ostoskori -kuva*/
+        width: 95px;
+        height: 92px;
+        margin-left: 4px;
+    }
 
-.searchbar-form input {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /*margin-top: 5px;*/
-}
+    .searchbar {                            /*Sisältä hakupalkin asiat*/       
+        padding-top: 5px;
+        width: 80%;         
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .searchbar-form {
+        width: 70%;
+        display: flex;
+        align-items: center;
+    }
 
-.searchbar-form button {
-    width: 15%;
-    padding: 6px;
-    background-color: #000a01;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
-}
+    .searchbar-form input {
+        width: 80%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        /*margin-top: 5px;*/
+    }
 
-.searchbar-form button:hover {
-    background-color: #45a049;
-}
+    .searchbar-form button {
+        width: 15%;
+        height: 10%;
+        padding: 6px;
+        background-color: #000a01;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 10px;
+    }
 
-.new-customer button {
-    width: 45%;
-    padding: 6px;
-    background-color: #000a01;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 20px;
-    margin-top: 10px;
-}
+    .searchbar-form button:hover {
+        background-color: #45a049;
+    }
+    
+    .new-customer {
+       margin-left: 12px;
+    }
 
-.new-customer button:hover {
-    background-color: #45a049;
-}
+    .new-customer button {
+        width: 100%;
+        padding: 10px;
+        background-color: #0a8d15;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 4px;
+    }
+    
+    .new-customer button:hover {
+        background-color: #45a049;
+    }
 
-.menu-cart-container {
-    display: inherit;
-    align-items: center;
-    padding-left: 10%;
-}
-
-.log {                                  /*Valikko-kuva*/
-    width: 150px; 
-    height: 100px;
-}
-
-.cart-image {                           /*Ostoskori -kuva*/
-    width: 120px;
-    height: 102px;
-    padding-bottom: 6px;
-    margin-left: 4px;
-}
 
 .login-container {
-    margin-left: 100px;
-}
-
-.login-container h3 {
-    margin-top: -15;
+    width: auto;
+    margin-left: 12px;
+    
 }
 
 .login-form {
+    align-items: center;
+    display: block;
     max-width: 400px;
-    margin-bottom: 0;
     position: relative;
+    /*margin-top: 0;*/
 }
 
 .button-errors-wrap {
     display: flex;
+    margin-bottom: 0;
+}
+
+.error-message-wrap {
+    width: 100%;
+    
 }
 
 .error-message-wrap p{
@@ -164,7 +225,8 @@ header {
 }
 
 .login-form button {
-    width: 50%;
+    
+    margin-top: 6px;
     padding: 6px;
     background-color: #000a01;
     color: #fff;
@@ -172,7 +234,8 @@ header {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    margin-right: 0;
+    
 }
 
 .login-form button:hover {
@@ -195,13 +258,8 @@ header {
     background-color: #45a049;
 }
 
+
 /*NAVIGATION*/
-nav {
-    width: 55%;
-    margin: 0 auto;
-    margin-top: 5px;
-    display: none;           
-}
 
 nav a {
     color: aliceblue;
@@ -520,15 +578,6 @@ nav a {
 
 /*FOOTER*/
 
-footer {
-    background-color: black;
-    height: 12rem;
-    width: 58%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    
-}
 
 .footer-header-body-container {
     align-content: center;
