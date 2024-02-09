@@ -2,7 +2,8 @@
 //ETUSIVU
 require_once 'includes/db_enquiry.inc.php';                                                 
 include 'functions_partials.php';
-includeUpperElements();                       
+includeUpperElements();
+echo "<div class='order-page-container'>";                       
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finalize_order'])) {
     // Tässä voit käyttää $_POST-muuttujia lomakkeen tiedon käsittelemiseen
@@ -46,14 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finalize_order'])) {
     echo "Sukunimi: $lastname<br>";
     echo "Sähköposti: $email<br>";
     echo "Osoite: $address<br>";
-
+    echo "<br></br>";
    
 }
 ?>
     <!--Lomake joka lähettää tilauksen-->
-    <form action="order_process.php" method="post">
+    <form action="order_process.php" method="post" class="order-button">
         <input type="submit" name="place_order" value="Tilaa">
     </form>
 <?php
+echo "</div>";
 includeBottomElements();
 ?>

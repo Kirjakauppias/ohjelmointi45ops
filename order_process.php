@@ -47,8 +47,8 @@ $conn = null;
 echo "</div>";
 includeBottomElements();
 
-//Session testauskoodi.
+/*Session testauskoodi.
 echo "<pre>";
 var_dump($_SESSION);
-echo "</pre>";
+echo "</pre>";*/
 ?>

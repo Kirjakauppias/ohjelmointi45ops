@@ -82,6 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
         echo "<form method='post' action='shopping_cart.php' class='reset-cart-form'>";
             echo "<button type='submit' name='reset_cart'>Nollaa ostoskori</button>";
         echo "</form>";
+        //Tarkista, onko nollaa ostoskori -painiketta painettu
+        if (isset($_POST['reset_cart'])) {
+            //Tyhjennä ostoskori.
+            //Poistetaan väliaikainen $_SESSION["cart"].
+            unset($_SESSION["cart"]);
+            header("Location: shopping_cart.php"); // Ohjaa takaisin ostoskorin sivulle
+            exit();
+        }
         echo "</div>";
         echo "<div class='user-order-info-wrap'>";
 
@@ -103,14 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
         echo "Ostoskori on tyhjä.";
     }
     
-    //Tarkista, onko nollaa ostoskori -painiketta painettu
-    if (isset($_POST['reset_cart'])) {
-        //Tyhjennä ostoskori.
-        //Poistetaan väliaikainen $_SESSION["cart"].
-        unset($_SESSION["cart"]);
-        header("Location: shopping_cart.php"); // Ohjaa takaisin ostoskorin sivulle
-        exit();
-    }
 
 echo "</div>";
 echo "</div>";

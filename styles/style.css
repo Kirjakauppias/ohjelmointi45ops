@@ -1,12 +1,61 @@
 /*Resoluutio 1300x945*/
 
 @media screen and (max-width: 1300px) and (max-height: 945px) {
-    .header-wrapper{
-        width: 100%;
+
+    header {
+        width: 100%;                         
+        height: auto;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid black;
+        justify-content: flex-start !important;
+    }
+
+    main {
+        width: auto !important;
+        align-items: center !important;
     }
 
     .login-container {
         display: none;
+    }
+
+    .login-form-small{
+        display: flex !important;
+    }
+    
+    .login-form-small input {
+        width: 80%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        /*margin-top: 5px;*/
+    }
+    
+    .login-form-small button {
+        width: 70px;
+        height: 95%;
+        padding: 6px;
+        background-color: #000a01;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    
+    .login-form-small button:hover {
+        background-color: #45a049;
+    }
+    
+    .login-form-small-inputs {                        
+        align-items: center;
+        display: flex;
+    }
+
+    .product-container {
+        width: 50% !important;                        
     }
 }
 
@@ -35,7 +84,7 @@ nav {
 }
 
 main {
-    width: 80%;
+    width: 70%;
     flex: 1;
     margin: 0 auto;
     margin-top: 3rem;
@@ -74,12 +123,18 @@ ol {
     list-style-type: none;
     padding-inline-start: 5px;
 }
+
+.button:hover {
+    background-color: #45a049;
+}
+
 /*HEADER*/
 
 .header-wrapper {                       /*Ohjailee otsikko -tason divejä*/
     width: 50%;
     display: block;
 }
+
 
 .banner-searchbar-container {           /*Sisältää banner & searchbar*/
     display: block;
@@ -112,14 +167,14 @@ ol {
     }
     
     .log {                                  /*Valikko-kuva*/
-        width: 125px; 
-        height: 90px;
+        width: 130px; 
+        height: 95px;
         padding-top: 5px;
     }
     
     .cart-image {                           /*Ostoskori -kuva*/
-        width: 95px;
-        height: 92px;
+        width: 105px;
+        height: 98px;
         margin-left: 4px;
     }
 
@@ -127,8 +182,6 @@ ol {
         padding-top: 5px;
         width: 80%;         
         margin-left: 20px;
-        display: flex;
-        align-items: center;
     }
     
     .searchbar-form {
@@ -146,7 +199,7 @@ ol {
     }
 
     .searchbar-form button {
-        width: 15%;
+        width: 60px;
         height: 10%;
         padding: 6px;
         background-color: #000a01;
@@ -186,14 +239,13 @@ ol {
 .login-container {
     width: auto;
     margin-left: 12px;
-    
 }
 
 .login-form {
     align-items: center;
     display: block;
     max-width: 400px;
-    position: relative;
+    /*position: relative;*/
     /*margin-top: 0;*/
 }
 
@@ -258,6 +310,9 @@ ol {
     background-color: #45a049;
 }
 
+.login-form-small {                         /*Estetään näkymästä kun näyttö on isolla*/
+    display: none;
+}
 
 /*NAVIGATION*/
 
@@ -575,6 +630,25 @@ nav a {
     background-color: #45a049;
 }
 
+.order-page-container {
+    width: 100%;
+}
+
+.order-button input {
+    width: 10%;
+    padding: 6px;
+    background-color: #000a01;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.order-button input:hover {
+    background-color: #45a049;
+}
 
 /*FOOTER*/
 
